@@ -1,0 +1,23 @@
+
+## R Package Versioning 
+
+R considers 0.9.1-10 to be a valid package version, but you’ll never see a version number like that for a tidyverse package. Here is our recommended framework for managing the package version number:
+
+- Always use `.` as the separator, never `-`.
+- A released version number consists of three numbers, <major>.<minor>.<patch>. For version number 1.9.2, 1 is the major number, 9 is the minor number, and 2 is the patch number. Never use versions like 1.0. Always spell out the three components, 1.0.0.
+
+    <major>.<minor>.<patch>        # released version
+
+- Increment patch, e.g. 0.8.2 for a patch release: you’ve fixed bugs, but you haven’t added any significant new features and there are no breaking changes. For example, if we discover a show-stopping bug shortly after a release, we would make a quick patch release with the fix. Most releases will have a patch number of 0.
+- Increment minor, e.g. 0.9.0, for a minor release. A minor release can include bug fixes, new features, and changes that are backward compatible3. This is the most common type of release. It’s perfectly fine to have so many minor releases that you need to use two (or even three!) digits, e.g. 1.17.0.
+- Increment major, e.g. 1.0.0, for a major release. This is the most appropriate time to make changes that are not backward compatible and that are likely to affect many users. The 1.0.0 release has special significance and typically indicates that your package is feature complete with a stable API.
+
+The trickiest decision you are likely to face is whether a change is “breaking” enough to deserve a major release. For example, if you make an API-incompatible change to a rarely-used part of your code, it may not make sense to increase the major number. But if you fix a bug that many people depend on (it happens!), it will feel like a breaking change to those folks. It’s conceivable that such a bug fix could merit a major release.
+We’re mostly dwelling on breaking change, but let’s not forget that sometimes you also add exciting new features to your package. From a marketing perspective, you probably want to save these for a major release, because your users are more likely to learn about the new goodies, from reading a blog post or NEWS.
+
+Let’s first look at the patch number. When you have a patch release, like going from version 1.0.1 to version 1.0.2, this indicates that there have been bug fixes or trivial updates. These are not major alterations to your application’s functionality.
+
+A minor release, like going from version 1.0.2 to 1.1.0, indicates that there’s been a change to functionality. This can be a functionality change, adding completely new functionality, or removing existing functionality. 
+
+A major release, like going from version 1.1.0 to version 2.0.0, indicates changes that might break backward compatibility or significantly alter functionality. This could be everything from removing deprecated code to introducing a complete re-architecture of your application. Major version numbers tell people that there have been major changes and some things may no longer work as they did on the old version, or that there are new steps that need to be followed to get the same functionality. 
+

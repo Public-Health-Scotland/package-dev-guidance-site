@@ -1,0 +1,16 @@
+
+
+## Commits vs Tags
+
+A package based on a Git endpoint can be configured to watch one of two types of changes: "commits" or "tags." In short, "commits" watches for changes to a specified Git branch, where "tags" watches for new tags in the whole Git repository.
+
+Commit mode is recommended for bleeding edge repositories, whereas tag mode is suitable for exposing stable releases of packages.
+
+A Git source can support different packages with different modes. However, a given package can only have one mode in a source. If you would like to surface the same package in both commit and tag mode, you must create two Git sources.
+
+### Commits and Tags Behavior for R Packages
+
+- **Commits**: Package Manager will update the package any time new commits are discovered in a branch. In this mode, Package Manager *automatically modifies the package's version*, assigning a unique version number to each build. The version number is created based on the commit time-stamp and is designed to avoid conflicts with the version scheme used by the package author. For example, if the Description file for a package indicates a version of 1.1-3, the automatic version number would be: `1.1-3.0.0.0.1537204599`. If the author updates the package with a new commit, but keeps the version in the Description file the same, the new automatic version number would reflect the new commit time-stamp, e.g. `1.1-3.0.0.0.1537218677`. This process ensures that users of the package always get the correct behavior from `install.packages()`, with newer commits being associated with a semantically higher version number.
+- **Tags**: Package Manager will update the package any time a new Git tag is discovered. In this mode, Package Manager retains the version specified in the package's Description file. This mode is designed to work when a Git tag is used to indicate a package release. Note: The name of the tag must match the version in the Description file. For example, if your package's Description file has Version: `5.4.2`, your tag must be either `5.4.2` or `v5.4.2`. If two tags reference the same version, preference is given to the newer tag. If a newer tag references an older version than a prior tag, the new tag is built as an archived package. If a tag is removed from a Git endpoint, any packages already built for that tag remain.
+
+Check if PHS POSIT Package Manager is using tags or commits by searching the package name at https://ppm.publichealthscotland.org/client/#/repos/3/packages/

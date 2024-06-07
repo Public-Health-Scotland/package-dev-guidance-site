@@ -1,0 +1,17 @@
+{
+  "index.qmd": {
+    "index.html": "2cb0e480"
+  },
+  "about.qmd": {
+    "about.html": "9cf6f7c8"
+  },
+  "commits-vs-tags.qmd": {
+    "commits-vs-tags.html": "12356199"
+  },
+  "r-package-versioning.qmd": {
+    "r-package-versioning.html": "427f3710"
+  },
+  "in-development-branches.qmd": {
+    "in-development-branches.html": "7b838b56"
+  }
+}

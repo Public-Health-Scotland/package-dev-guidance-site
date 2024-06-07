@@ -1,0 +1,32 @@
+project:
+  type: website
+
+website:
+  title: "PHS Package Development Guidance"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+  sidebar: 
+    style: "floating"
+    search: true
+    contents: 
+      - section: "Section 1"
+        contents:
+          - href: commits-vs-tags.qmd
+            text: "Commits vs Tags"
+          - href: r-package-versioning.qmd
+            text: "R Package Versioning" 
+      - section: "Section 2"
+        contents:
+          - href: in-development-branches.qmd
+            text: "In-Development Branches"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
