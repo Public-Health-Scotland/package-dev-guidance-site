@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHS Package Development Guidance - PHS Package Management Guidance Website</title>
+<title>PHS Package Development Guidance – r-package-versioning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,7 +61,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="phs_style.css">
+<link rel="stylesheet" href="../phs_style.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PHS Package Development Guidance</span>
     </a>
   </div>
@@ -82,11 +82,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">PHS Package Management Guidance Website</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/r-package-versioning.html">R Package Versioning</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -122,49 +122,49 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/purpose.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/purpose.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Purpose</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/commits-vs-tags.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/commits-vs-tags.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Commits vs Tags</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/r-package-versioning.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/r-package-versioning.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">R Package Versioning</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/in-development-branches.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/in-development-branches.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">In-Development Branches</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/tags-and-releases.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/tags-and-releases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tags and Releases</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/git-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/git-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Workflow</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/annotated-tags.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/annotated-tags.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Annotated Tags</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/recommended-git-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/recommended-git-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recommended Git Workflow</span></a>
   </div>
 </li>
@@ -174,31 +174,37 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#r-package-versioning" id="toc-r-package-versioning" class="nav-link active" data-scroll-target="#r-package-versioning">R Package Versioning</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">PHS Package Management Guidance Website</h1>
-</div>
 
 
+<section id="r-package-versioning" class="level2">
+<h2 class="anchored" data-anchor-id="r-package-versioning">R Package Versioning</h2>
+<p>R considers 0.9.1-10 to be a valid package version, but you’ll never see a version number like that for a tidyverse package. Here is our recommended framework for managing the package version number:</p>
+<ul>
+<li><p>Always use <code>.</code> as the separator, never <code>-</code>.</p></li>
+<li><p>A released version number consists of three numbers, <major>.<minor>.<patch>. For version number 1.9.2, 1 is the major number, 9 is the minor number, and 2 is the patch number. Never use versions like 1.0. Always spell out the three components, 1.0.0.</patch></minor></major></p>
+<p><major>.<minor>.<patch> # released version</patch></minor></major></p></li>
+<li><p>Increment patch, e.g.&nbsp;0.8.2 for a patch release: you’ve fixed bugs, but you haven’t added any significant new features and there are no breaking changes. For example, if we discover a show-stopping bug shortly after a release, we would make a quick patch release with the fix. Most releases will have a patch number of 0.</p></li>
+<li><p>Increment minor, e.g.&nbsp;0.9.0, for a minor release. A minor release can include bug fixes, new features, and changes that are backward compatible3. This is the most common type of release. It’s perfectly fine to have so many minor releases that you need to use two (or even three!) digits, e.g.&nbsp;1.17.0.</p></li>
+<li><p>Increment major, e.g.&nbsp;1.0.0, for a major release. This is the most appropriate time to make changes that are not backward compatible and that are likely to affect many users. The 1.0.0 release has special significance and typically indicates that your package is feature complete with a stable API.</p></li>
+</ul>
+<p>The trickiest decision you are likely to face is whether a change is “breaking” enough to deserve a major release. For example, if you make an API-incompatible change to a rarely-used part of your code, it may not make sense to increase the major number. But if you fix a bug that many people depend on (it happens!), it will feel like a breaking change to those folks. It’s conceivable that such a bug fix could merit a major release. We’re mostly dwelling on breaking change, but let’s not forget that sometimes you also add exciting new features to your package. From a marketing perspective, you probably want to save these for a major release, because your users are more likely to learn about the new goodies, from reading a blog post or NEWS.</p>
+<p>Let’s first look at the patch number. When you have a patch release, like going from version 1.0.1 to version 1.0.2, this indicates that there have been bug fixes or trivial updates. These are not major alterations to your application’s functionality.</p>
+<p>A minor release, like going from version 1.0.2 to 1.1.0, indicates that there’s been a change to functionality. This can be a functionality change, adding completely new functionality, or removing existing functionality.</p>
+<p>A major release, like going from version 1.1.0 to version 2.0.0, indicates changes that might break backward compatibility or significantly alter functionality. This could be everything from removing deprecated code to introducing a complete re-architecture of your application. Major version numbers tell people that there have been major changes and some things may no longer work as they did on the old version, or that there are new steps that need to be followed to get the same functionality.</p>
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>loren</p>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,0 +1,3 @@
+## Guidance on Package Development for POSIT Package Manager
+
+Purpose is to have consistency in versioning and tagging during R package development. Currently POSIT Package Manager is using the latest commit for PHS R packages that are not on CRAN and only available on Github. In general we want the POSIT Package Manager to use tagged versions for R packages on Github but this requires us to agree on a consistent workflow for versioning and tagging. This is to ensure users are using the latest stable release and not missing out on any important developments when they install PHS R packages.

@@ -12,17 +12,22 @@ website:
     style: "floating"
     search: true
     contents: 
-      - section: "Section 1"
-        contents:
-          - href: commits-vs-tags.qmd
-            text: "Commits vs Tags"
-          - href: r-package-versioning.qmd
-            text: "R Package Versioning" 
-      - section: "Section 2"
-        contents:
-          - href: in-development-branches.qmd
-            text: "In-Development Branches"
-
+      - href: pages/purpose.qmd
+        text: "Purpose"
+      - href: pages/commits-vs-tags.qmd
+        text: "Commits vs Tags"
+      - href: pages/r-package-versioning.qmd
+        text: "R Package Versioning" 
+      - href: pages/in-development-branches.qmd
+        text: "In-Development Branches"
+      - href: pages/tags-and-releases.qmd
+        text: "Tags and Releases"
+      - href: pages/git-workflow.qmd
+        text: "Git Workflow"
+      - href: pages/annotated-tags.qmd
+        text: "Annotated Tags"
+      - href: pages/recommended-git-workflow.qmd
+        text: "Recommended Git Workflow"
 format:
   html:
     theme: cosmo

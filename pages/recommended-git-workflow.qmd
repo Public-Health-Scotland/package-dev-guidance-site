@@ -1,0 +1,12 @@
+## Recommended Git Workflow
+
+- Create a development branch
+- `usethis::use_version(x.x.x.9000)` or update DESCRIPTION
+- `git add -A`, `git commit -m`, `git push origin dev-branch`, 
+- Submit pull request
+- Get changes reviewed
+- Once changes are approved, the maintainer decides on version major/minor/patch version increment – how to attach tag at this point? Ask developer to commit again with decided version and tag?
+- Merge to main branch
+
+
+Turn this into a flowchart?

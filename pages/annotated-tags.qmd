@@ -1,0 +1,32 @@
+## Annotated Tags
+
+Creating an annotated tag in Git is simple. The easiest way is to specify `-a` when you run the tag command:
+
+``` bash
+$ git tag -a v1.4 -m "my version 1.4" 
+$ git tag 
+v0.1 
+v1.3 
+v1.4
+```
+
+The `-m` specifies a tagging message, which is stored with the tag. If you don’t specify a message for an annotated tag, Git launches your editor so you can type it in.
+
+You can see the tag data along with the commit that was tagged by using the `git show` command:
+
+``` bash
+\$ git show v1.4 
+tag v1.4 
+Tagger: Ben Straub [ben\@straub.cc](mailto:ben@straub.cc){.email} 
+Date: Sat May 3 20:19:12 2014 -0700
+
+my version 1.4
+
+commit ca82a6dff817ec66f44342007202690a93763949 
+Author: Scott Chacon [schacon\@gee-mail.com](mailto:schacon@gee-mail.com){.email} 
+Date: Mon Mar 17 21:52:11 2008 -0700
+
+    Change version number
+```
+
+That shows the tagger information, the date the commit was tagged, and the annotation message before showing the commit information.

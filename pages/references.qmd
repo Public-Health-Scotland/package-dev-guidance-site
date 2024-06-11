@@ -1,0 +1,9 @@
+## References
+
+- [R Packages (2e) - 21  Lifecycle (r-pkgs.org)](https://r-pkgs.org/lifecycle.html)
+- [Managing Releases with Semantic Versioning and Git Tags (gitkraken.com)](https://www.gitkraken.com/gitkon/semantic-versioning-git-tags)
+- [git tag - Is there a standard naming convention for git tags? - Stack Overflow](https://stackoverflow.com/questions/2006265/is-there-a-standard-naming-convention-for-git-tags)
+- [Building Git Packages - Posit Package Manager](https://docs.posit.co/rspm/admin/building-packages/#commits-vs-tags)
+- [git - What's the difference between tag and release? - Stack Overflow](https://stackoverflow.com/questions/18506508/whats-the-difference-between-tag-and-release)
+- [Git - Tagging (git-scm.com)](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
+- [https://ppm.publichealthscotland.org/client/#/repos/3/packages/](https://ppm.publichealthscotland.org/client/#/repos/3/packages/)

@@ -9,9 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "quarto-package-guidance-website",
+    "title": "PHS Package Management Guidance Website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "loren"
   },
   {
     "objectID": "commits-vs-tags.html",
@@ -54,5 +54,131 @@
     "title": "PHS Package Development Guidance",
     "section": "",
     "text": "An in-development package has a fourth component: the development version. This should start at 9000. The number 9000 is arbitrary, but provides a clear signal that there’s something different about this version number. There are two reasons for this practice: First, the presence of a fourth component makes it easy to tell if you’re dealing with a released or in-development version. Also, the use of the fourth place means that you’re not limited to what the next released version will be. 0.0.1, 0.1.0, and 1.0.0 are all greater than 0.0.0.9000.\nIncrement the development version, e.g. from 9000 to 9001, if you’ve added an important feature and you (or others) need to be able to detect or require the presence of this feature. For example, this can happen when two packages are developing in tandem. This is generally the only reason that we bother to increment the development version. This makes in-development versions special and, in some sense, degenerate. Since we don’t increment the development component with each Git commit, the same package version number is associated with many different states of the package source, in between releases."
+  },
+  {
+    "objectID": "pages/annotated-tags.html",
+    "href": "pages/annotated-tags.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Creating an annotated tag in Git is simple. The easiest way is to specify -a when you run the tag command:\n$ git tag -a v1.4 -m \"my version 1.4\" \n$ git tag \nv0.1 \nv1.3 \nv1.4\nThe -m specifies a tagging message, which is stored with the tag. If you don’t specify a message for an annotated tag, Git launches your editor so you can type it in.\nYou can see the tag data along with the commit that was tagged by using the git show command:\n\\$ git show v1.4 \ntag v1.4 \nTagger: Ben Straub [ben\\@straub.cc](mailto:ben@straub.cc){.email} \nDate: Sat May 3 20:19:12 2014 -0700\n\nmy version 1.4\n\ncommit ca82a6dff817ec66f44342007202690a93763949 \nAuthor: Scott Chacon [schacon\\@gee-mail.com](mailto:schacon@gee-mail.com){.email} \nDate: Mon Mar 17 21:52:11 2008 -0700\n\n    Change version number\nThat shows the tagger information, the date the commit was tagged, and the annotation message before showing the commit information."
+  },
+  {
+    "objectID": "pages/annotated-tags.html#annotated-tags",
+    "href": "pages/annotated-tags.html#annotated-tags",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Creating an annotated tag in Git is simple. The easiest way is to specify -a when you run the tag command:\n$ git tag -a v1.4 -m \"my version 1.4\" \n$ git tag \nv0.1 \nv1.3 \nv1.4\nThe -m specifies a tagging message, which is stored with the tag. If you don’t specify a message for an annotated tag, Git launches your editor so you can type it in.\nYou can see the tag data along with the commit that was tagged by using the git show command:\n\\$ git show v1.4 \ntag v1.4 \nTagger: Ben Straub [ben\\@straub.cc](mailto:ben@straub.cc){.email} \nDate: Sat May 3 20:19:12 2014 -0700\n\nmy version 1.4\n\ncommit ca82a6dff817ec66f44342007202690a93763949 \nAuthor: Scott Chacon [schacon\\@gee-mail.com](mailto:schacon@gee-mail.com){.email} \nDate: Mon Mar 17 21:52:11 2008 -0700\n\n    Change version number\nThat shows the tagger information, the date the commit was tagged, and the annotation message before showing the commit information."
+  },
+  {
+    "objectID": "pages/purpose.html",
+    "href": "pages/purpose.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Purpose is to have consistency in versioning and tagging during R package development. Currently POSIT Package Manager is using the latest commit for PHS R packages that are not on CRAN and only available on Github. In general we want the POSIT Package Manager to use tagged versions for R packages on Github but this requires us to agree on a consistent workflow for versioning and tagging. This is to ensure users are using the latest stable release and not missing out on any important developments when they install PHS R packages."
+  },
+  {
+    "objectID": "pages/purpose.html#guidance-on-package-development-for-posit-package-manager",
+    "href": "pages/purpose.html#guidance-on-package-development-for-posit-package-manager",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Purpose is to have consistency in versioning and tagging during R package development. Currently POSIT Package Manager is using the latest commit for PHS R packages that are not on CRAN and only available on Github. In general we want the POSIT Package Manager to use tagged versions for R packages on Github but this requires us to agree on a consistent workflow for versioning and tagging. This is to ensure users are using the latest stable release and not missing out on any important developments when they install PHS R packages."
+  },
+  {
+    "objectID": "pages/tags-and-releases.html",
+    "href": "pages/tags-and-releases.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "A tag is a pointer to a specific commit. This pointer can be super charged with some additional information (identity of the creator of the tag, a description, a GPG signature, …). A tag is a git concept whereas a Release is GitHub higher level concept. As stated in the official announcement post from the GitHub blog:\n\nReleases are first-class objects with changelogs and binary assets that present a full project history beyond Git artifacts.\n\nA Release is created from an existing tag and exposes release notes and links to download the software or source code from GitHub.\n1.  When tagging releases in a version control system, the tag for a version MUST be \"vX.Y.Z\" e.g. \"v3.1.0\"."
+  },
+  {
+    "objectID": "pages/tags-and-releases.html#tags-and-releases",
+    "href": "pages/tags-and-releases.html#tags-and-releases",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "A tag is a pointer to a specific commit. This pointer can be super charged with some additional information (identity of the creator of the tag, a description, a GPG signature, …). A tag is a git concept whereas a Release is GitHub higher level concept. As stated in the official announcement post from the GitHub blog:\n\nReleases are first-class objects with changelogs and binary assets that present a full project history beyond Git artifacts.\n\nA Release is created from an existing tag and exposes release notes and links to download the software or source code from GitHub.\n1.  When tagging releases in a version control system, the tag for a version MUST be \"vX.Y.Z\" e.g. \"v3.1.0\"."
+  },
+  {
+    "objectID": "pages/git-workflow.html",
+    "href": "pages/git-workflow.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Git supports two types of tags: lightweight and annotated.\nA lightweight tag is very much like a branch that doesn’t change — it’s just a pointer to a specific commit.\nAnnotated tags, however, are stored as full objects in the Git database. They’re checksummed; contain the tagger name, email, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG). It’s generally recommended that you create annotated tags so you can have all this information; but if you want a temporary tag or for some reason don’t want to keep the other information, lightweight tags are available too."
+  },
+  {
+    "objectID": "pages/git-workflow.html#git-workflow",
+    "href": "pages/git-workflow.html#git-workflow",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Git supports two types of tags: lightweight and annotated.\nA lightweight tag is very much like a branch that doesn’t change — it’s just a pointer to a specific commit.\nAnnotated tags, however, are stored as full objects in the Git database. They’re checksummed; contain the tagger name, email, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG). It’s generally recommended that you create annotated tags so you can have all this information; but if you want a temporary tag or for some reason don’t want to keep the other information, lightweight tags are available too."
+  },
+  {
+    "objectID": "pages/commits-vs-tags.html",
+    "href": "pages/commits-vs-tags.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "A package based on a Git endpoint can be configured to watch one of two types of changes: “commits” or “tags.” In short, “commits” watches for changes to a specified Git branch, where “tags” watches for new tags in the whole Git repository.\nCommit mode is recommended for bleeding edge repositories, whereas tag mode is suitable for exposing stable releases of packages.\nA Git source can support different packages with different modes. However, a given package can only have one mode in a source. If you would like to surface the same package in both commit and tag mode, you must create two Git sources.\n\n\n\nCommits: Package Manager will update the package any time new commits are discovered in a branch. In this mode, Package Manager automatically modifies the package’s version, assigning a unique version number to each build. The version number is created based on the commit time-stamp and is designed to avoid conflicts with the version scheme used by the package author. For example, if the Description file for a package indicates a version of 1.1-3, the automatic version number would be: 1.1-3.0.0.0.1537204599. If the author updates the package with a new commit, but keeps the version in the Description file the same, the new automatic version number would reflect the new commit time-stamp, e.g. 1.1-3.0.0.0.1537218677. This process ensures that users of the package always get the correct behavior from install.packages(), with newer commits being associated with a semantically higher version number.\nTags: Package Manager will update the package any time a new Git tag is discovered. In this mode, Package Manager retains the version specified in the package’s Description file. This mode is designed to work when a Git tag is used to indicate a package release. Note: The name of the tag must match the version in the Description file. For example, if your package’s Description file has Version: 5.4.2, your tag must be either 5.4.2 or v5.4.2. If two tags reference the same version, preference is given to the newer tag. If a newer tag references an older version than a prior tag, the new tag is built as an archived package. If a tag is removed from a Git endpoint, any packages already built for that tag remain.\n\nCheck if PHS POSIT Package Manager is using tags or commits by searching the package name at https://ppm.publichealthscotland.org/client/#/repos/3/packages/"
+  },
+  {
+    "objectID": "pages/commits-vs-tags.html#commits-vs-tags",
+    "href": "pages/commits-vs-tags.html#commits-vs-tags",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "A package based on a Git endpoint can be configured to watch one of two types of changes: “commits” or “tags.” In short, “commits” watches for changes to a specified Git branch, where “tags” watches for new tags in the whole Git repository.\nCommit mode is recommended for bleeding edge repositories, whereas tag mode is suitable for exposing stable releases of packages.\nA Git source can support different packages with different modes. However, a given package can only have one mode in a source. If you would like to surface the same package in both commit and tag mode, you must create two Git sources.\n\n\n\nCommits: Package Manager will update the package any time new commits are discovered in a branch. In this mode, Package Manager automatically modifies the package’s version, assigning a unique version number to each build. The version number is created based on the commit time-stamp and is designed to avoid conflicts with the version scheme used by the package author. For example, if the Description file for a package indicates a version of 1.1-3, the automatic version number would be: 1.1-3.0.0.0.1537204599. If the author updates the package with a new commit, but keeps the version in the Description file the same, the new automatic version number would reflect the new commit time-stamp, e.g. 1.1-3.0.0.0.1537218677. This process ensures that users of the package always get the correct behavior from install.packages(), with newer commits being associated with a semantically higher version number.\nTags: Package Manager will update the package any time a new Git tag is discovered. In this mode, Package Manager retains the version specified in the package’s Description file. This mode is designed to work when a Git tag is used to indicate a package release. Note: The name of the tag must match the version in the Description file. For example, if your package’s Description file has Version: 5.4.2, your tag must be either 5.4.2 or v5.4.2. If two tags reference the same version, preference is given to the newer tag. If a newer tag references an older version than a prior tag, the new tag is built as an archived package. If a tag is removed from a Git endpoint, any packages already built for that tag remain.\n\nCheck if PHS POSIT Package Manager is using tags or commits by searching the package name at https://ppm.publichealthscotland.org/client/#/repos/3/packages/"
+  },
+  {
+    "objectID": "pages/r-package-versioning.html",
+    "href": "pages/r-package-versioning.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "R considers 0.9.1-10 to be a valid package version, but you’ll never see a version number like that for a tidyverse package. Here is our recommended framework for managing the package version number:\n\nAlways use . as the separator, never -.\nA released version number consists of three numbers, ... For version number 1.9.2, 1 is the major number, 9 is the minor number, and 2 is the patch number. Never use versions like 1.0. Always spell out the three components, 1.0.0.\n.. # released version\nIncrement patch, e.g. 0.8.2 for a patch release: you’ve fixed bugs, but you haven’t added any significant new features and there are no breaking changes. For example, if we discover a show-stopping bug shortly after a release, we would make a quick patch release with the fix. Most releases will have a patch number of 0.\nIncrement minor, e.g. 0.9.0, for a minor release. A minor release can include bug fixes, new features, and changes that are backward compatible3. This is the most common type of release. It’s perfectly fine to have so many minor releases that you need to use two (or even three!) digits, e.g. 1.17.0.\nIncrement major, e.g. 1.0.0, for a major release. This is the most appropriate time to make changes that are not backward compatible and that are likely to affect many users. The 1.0.0 release has special significance and typically indicates that your package is feature complete with a stable API.\n\nThe trickiest decision you are likely to face is whether a change is “breaking” enough to deserve a major release. For example, if you make an API-incompatible change to a rarely-used part of your code, it may not make sense to increase the major number. But if you fix a bug that many people depend on (it happens!), it will feel like a breaking change to those folks. It’s conceivable that such a bug fix could merit a major release. We’re mostly dwelling on breaking change, but let’s not forget that sometimes you also add exciting new features to your package. From a marketing perspective, you probably want to save these for a major release, because your users are more likely to learn about the new goodies, from reading a blog post or NEWS.\nLet’s first look at the patch number. When you have a patch release, like going from version 1.0.1 to version 1.0.2, this indicates that there have been bug fixes or trivial updates. These are not major alterations to your application’s functionality.\nA minor release, like going from version 1.0.2 to 1.1.0, indicates that there’s been a change to functionality. This can be a functionality change, adding completely new functionality, or removing existing functionality.\nA major release, like going from version 1.1.0 to version 2.0.0, indicates changes that might break backward compatibility or significantly alter functionality. This could be everything from removing deprecated code to introducing a complete re-architecture of your application. Major version numbers tell people that there have been major changes and some things may no longer work as they did on the old version, or that there are new steps that need to be followed to get the same functionality."
+  },
+  {
+    "objectID": "pages/r-package-versioning.html#r-package-versioning",
+    "href": "pages/r-package-versioning.html#r-package-versioning",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "R considers 0.9.1-10 to be a valid package version, but you’ll never see a version number like that for a tidyverse package. Here is our recommended framework for managing the package version number:\n\nAlways use . as the separator, never -.\nA released version number consists of three numbers, ... For version number 1.9.2, 1 is the major number, 9 is the minor number, and 2 is the patch number. Never use versions like 1.0. Always spell out the three components, 1.0.0.\n.. # released version\nIncrement patch, e.g. 0.8.2 for a patch release: you’ve fixed bugs, but you haven’t added any significant new features and there are no breaking changes. For example, if we discover a show-stopping bug shortly after a release, we would make a quick patch release with the fix. Most releases will have a patch number of 0.\nIncrement minor, e.g. 0.9.0, for a minor release. A minor release can include bug fixes, new features, and changes that are backward compatible3. This is the most common type of release. It’s perfectly fine to have so many minor releases that you need to use two (or even three!) digits, e.g. 1.17.0.\nIncrement major, e.g. 1.0.0, for a major release. This is the most appropriate time to make changes that are not backward compatible and that are likely to affect many users. The 1.0.0 release has special significance and typically indicates that your package is feature complete with a stable API.\n\nThe trickiest decision you are likely to face is whether a change is “breaking” enough to deserve a major release. For example, if you make an API-incompatible change to a rarely-used part of your code, it may not make sense to increase the major number. But if you fix a bug that many people depend on (it happens!), it will feel like a breaking change to those folks. It’s conceivable that such a bug fix could merit a major release. We’re mostly dwelling on breaking change, but let’s not forget that sometimes you also add exciting new features to your package. From a marketing perspective, you probably want to save these for a major release, because your users are more likely to learn about the new goodies, from reading a blog post or NEWS.\nLet’s first look at the patch number. When you have a patch release, like going from version 1.0.1 to version 1.0.2, this indicates that there have been bug fixes or trivial updates. These are not major alterations to your application’s functionality.\nA minor release, like going from version 1.0.2 to 1.1.0, indicates that there’s been a change to functionality. This can be a functionality change, adding completely new functionality, or removing existing functionality.\nA major release, like going from version 1.1.0 to version 2.0.0, indicates changes that might break backward compatibility or significantly alter functionality. This could be everything from removing deprecated code to introducing a complete re-architecture of your application. Major version numbers tell people that there have been major changes and some things may no longer work as they did on the old version, or that there are new steps that need to be followed to get the same functionality."
+  },
+  {
+    "objectID": "pages/in-development-branches.html",
+    "href": "pages/in-development-branches.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "An in-development package has a fourth component: the development version. This should start at 9000. The number 9000 is arbitrary, but provides a clear signal that there’s something different about this version number. There are two reasons for this practice: First, the presence of a fourth component makes it easy to tell if you’re dealing with a released or in-development version. Also, the use of the fourth place means that you’re not limited to what the next released version will be. 0.0.1, 0.1.0, and 1.0.0 are all greater than 0.0.0.9000.\nIncrement the development version, e.g. from 9000 to 9001, if you’ve added an important feature and you (or others) need to be able to detect or require the presence of this feature. For example, this can happen when two packages are developing in tandem. This is generally the only reason that we bother to increment the development version. This makes in-development versions special and, in some sense, degenerate. Since we don’t increment the development component with each Git commit, the same package version number is associated with many different states of the package source, in between releases."
+  },
+  {
+    "objectID": "pages/in-development-branches.html#in-development-branches",
+    "href": "pages/in-development-branches.html#in-development-branches",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "An in-development package has a fourth component: the development version. This should start at 9000. The number 9000 is arbitrary, but provides a clear signal that there’s something different about this version number. There are two reasons for this practice: First, the presence of a fourth component makes it easy to tell if you’re dealing with a released or in-development version. Also, the use of the fourth place means that you’re not limited to what the next released version will be. 0.0.1, 0.1.0, and 1.0.0 are all greater than 0.0.0.9000.\nIncrement the development version, e.g. from 9000 to 9001, if you’ve added an important feature and you (or others) need to be able to detect or require the presence of this feature. For example, this can happen when two packages are developing in tandem. This is generally the only reason that we bother to increment the development version. This makes in-development versions special and, in some sense, degenerate. Since we don’t increment the development component with each Git commit, the same package version number is associated with many different states of the package source, in between releases."
+  },
+  {
+    "objectID": "pages/references.html",
+    "href": "pages/references.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "R Packages (2e) - 21 Lifecycle (r-pkgs.org)\nManaging Releases with Semantic Versioning and Git Tags (gitkraken.com)\ngit tag - Is there a standard naming convention for git tags? - Stack Overflow\nBuilding Git Packages - Posit Package Manager\ngit - What’s the difference between tag and release? - Stack Overflow\nGit - Tagging (git-scm.com)\nhttps://ppm.publichealthscotland.org/client/#/repos/3/packages/"
+  },
+  {
+    "objectID": "pages/references.html#references",
+    "href": "pages/references.html#references",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "R Packages (2e) - 21 Lifecycle (r-pkgs.org)\nManaging Releases with Semantic Versioning and Git Tags (gitkraken.com)\ngit tag - Is there a standard naming convention for git tags? - Stack Overflow\nBuilding Git Packages - Posit Package Manager\ngit - What’s the difference between tag and release? - Stack Overflow\nGit - Tagging (git-scm.com)\nhttps://ppm.publichealthscotland.org/client/#/repos/3/packages/"
+  },
+  {
+    "objectID": "pages/recommended-git-workflow.html",
+    "href": "pages/recommended-git-workflow.html",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Create a development branch\nusethis::use_version(x.x.x.9000) or update DESCRIPTION\ngit add -A, git commit -m, git push origin dev-branch,\nSubmit pull request\nGet changes reviewed\nOnce changes are approved, the maintainer decides on version major/minor/patch version increment – how to attach tag at this point? Ask developer to commit again with decided version and tag?\nMerge to main branch\n\nTurn this into a flowchart?"
+  },
+  {
+    "objectID": "pages/recommended-git-workflow.html#recommended-git-workflow",
+    "href": "pages/recommended-git-workflow.html#recommended-git-workflow",
+    "title": "PHS Package Development Guidance",
+    "section": "",
+    "text": "Create a development branch\nusethis::use_version(x.x.x.9000) or update DESCRIPTION\ngit add -A, git commit -m, git push origin dev-branch,\nSubmit pull request\nGet changes reviewed\nOnce changes are approved, the maintainer decides on version major/minor/patch version increment – how to attach tag at this point? Ask developer to commit again with decided version and tag?\nMerge to main branch\n\nTurn this into a flowchart?"
   }
 ]
