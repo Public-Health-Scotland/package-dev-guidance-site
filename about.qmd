@@ -2,4 +2,13 @@
 title: "About"
 ---
 
-About this site
+This website aims to provide guidance on best practice for setting up and developing packages within Public Health Scotland. 
+
+The website was developed in [Quarto](https://quarto.org/) and has the following contributors (in alphabetical order):
+
+- [Nick Christofides](https://github.com/Nic-Chr)
+- [Jon Minton](https://github.com/jonminton)
+- [Csilla Scharle](https://github.com/csillasch)
+- [Alan Yeung](https://github.com/alan-y)
+
+The repository containing the code for the website is publically available on github [here](https://github.com/Public-Health-Scotland/package-dev-guidance-site). You can contribute by either [raising an issue](https://github.com/Public-Health-Scotland/package-dev-guidance-site/issues), or forking the repo and [making a pull request](https://github.com/Public-Health-Scotland/package-dev-guidance-site/pulls). 
