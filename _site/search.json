@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "This website aims to provide guidance on best practice for setting up and developing packages within Public Health Scotland.\nThe website was developed in Quarto and has the following contributors (in alphabetical order):\n\nNick Christofides\nJon Minton\nCsilla Scharle\nAlan Yeung\n\nThe repository containing the code for the website is publically available on github here. You can contribute by either raising an issue, or forking the repo and making a pull request."
   },
   {
     "objectID": "index.html",
