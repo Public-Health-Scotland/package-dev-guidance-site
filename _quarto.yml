@@ -11,6 +11,7 @@ website:
   sidebar: 
     style: "floating"
     search: true
+    logo: https://github.com/Public-Health-Scotland/phstemplates/blob/main/inst/images/phs-logo.png?raw=true
     contents: 
       - href: pages/purpose.qmd
         text: "Purpose"
