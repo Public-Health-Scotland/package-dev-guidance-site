@@ -4,6 +4,8 @@ project:
 website:
   title: "PHS Package Development Guidance"
   navbar:
+    # logo: assets/img/mini-logo
+    logo: assets/img/smaller-transparent-mini-logo.png
     left:
       - href: index.qmd
         text: Home
@@ -11,6 +13,7 @@ website:
   sidebar: 
     style: "floating"
     search: true
+    logo: https://github.com/Public-Health-Scotland/phstemplates/blob/main/inst/images/phs-logo.png?raw=true
     contents: 
       - href: pages/purpose.qmd
         text: "Purpose"
