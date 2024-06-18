@@ -59,6 +59,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../phs_style.css">
@@ -194,6 +197,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="recommended-git-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="recommended-git-workflow">Recommended Git Workflow</h2>
+<p>Our recommended Git/Github developer workflow is as follows:</p>
 <ul>
 <li>Create a development branch</li>
 <li><code>usethis::use_version(x.x.x.9000)</code> or update DESCRIPTION</li>
@@ -203,7 +207,34 @@ ul.task-list li input[type="checkbox"] {
 <li>Once changes are approved, the maintainer decides on version major/minor/patch version increment – how to attach tag at this point? Ask developer to commit again with decided version and tag?</li>
 <li>Merge to main branch</li>
 </ul>
-<p>Turn this into a flowchart?</p>
+<p>Graphically, this looks as follows:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+    mb["Main Branch"]
+    cdb["Development Branch"]
+    ca["Changes added"]
+    cc["Changes committed"]
+    cp["Changes pushed"]
+    cr{Code Review}
+    vi[Version incremented]
+
+    mb --"git checkout -b dev-branch" --&gt; cdb
+    cdb --"git add -A" --&gt; ca
+    ca --"git commit -m 'commit message'" --&gt; cc
+    cc --"git push origin dev-branch" --&gt; cp
+    cp --"Github: Make Pull Request"--&gt; cr
+    cr --"Accept changes"--&gt; vi
+    vi --&gt; mb
+    cr --"Reject changes"--&gt; cdb
+
+</pre>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>

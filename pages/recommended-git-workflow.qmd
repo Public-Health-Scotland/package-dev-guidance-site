@@ -1,5 +1,7 @@
 ## Recommended Git Workflow
 
+Our recommended Git/Github developer workflow is as follows:
+
 - Create a development branch
 - `usethis::use_version(x.x.x.9000)` or update DESCRIPTION
 - `git add -A`, `git commit -m`, `git push origin dev-branch`, 
@@ -8,5 +10,26 @@
 - Once changes are approved, the maintainer decides on version major/minor/patch version increment – how to attach tag at this point? Ask developer to commit again with decided version and tag?
 - Merge to main branch
 
+Graphically, this looks as follows:
 
-Turn this into a flowchart?
+```{mermaid}
+flowchart TB
+    mb["Main Branch"]
+    cdb["Development Branch"]
+    ca["Changes added"]
+    cc["Changes committed"]
+    cp["Changes pushed"]
+    cr{Code Review}
+    vi[Version incremented]
+
+    mb --"git checkout -b dev-branch" --> cdb
+    cdb --"git add -A" --> ca
+    ca --"git commit -m 'commit message'" --> cc
+    cc --"git push origin dev-branch" --> cp
+    cp --"Github: Make Pull Request"--> cr
+    cr --"Accept changes"--> vi
+    vi --> mb
+    cr --"Reject changes"--> cdb
+
+```
+
