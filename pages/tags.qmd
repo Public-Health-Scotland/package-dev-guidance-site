@@ -1,0 +1,51 @@
+## Git Tags and Releases
+A **tag** is a git concept that allows you to label and attach information to a commit. For versioning, tags should be named according to the major/minor/patch format, prefixed by 'v', e.g. `v1.1.0` and should match up with the version set in the package's `DESCRIPTION` file on that commit. There are two types of git tags: `lightweight` and `annotated`.
+
+A lightweight tag can be thought of as a branch that does not change and is simply a pointer to a specific commit.
+
+Annotated tags are more complicated. They are stored as full objects in the Git database meaning they get checksummed and contain details such as the tagger name, email, date and a tagging message.  
+
+Although annotated tags include all this information (and are generally recommended over lightweight tags), lightweight tags should be sufficient for the versioning process when developing PHS R packages.
+
+**Releases** are a Github higher level concept, [described by GitHub](https://github.blog/2013-07-02-release-your-software){target="_blank"} as "first-class objects with changelogs and binary assets that present a full project history beyond Git artifacts." Compared to tags, releases include release notes and links to download the software or source code from GitHub. A release can be created from an existing tag, alternatively an associated tag will be created along with the new release.  
+
+In order of complexity, we would have lightweight tags being simplest, followed by annotated tags, and lastly releases.
+
+## Creating and Pushing Tags
+To see a list of tags currently being used, you can run `git tag`. For [phstemplates](https://github.com/Public-Health-Scotland/phstemplates){target="_blank"}, we see the following tags (as at 26th June 2024).
+
+``` bash
+$ git tag
+v1.0.0
+v1.1.0
+v1.2.0
+v1.2.1
+```
+
+To see details from a particular tag and the associated commit, you can use the `git show` command.
+
+``` bash
+$ git show v1.2.1
+commit 86878078431e4782697d808bb7e64b89b11de0d8 (tag: v1.2.1)
+Author: Alan Y <34042624+alan-y@users.noreply.github.com>
+Date:   Fri Jun 14 16:39:12 2024 +0100
+```
+
+To create a lightweight tag, we simply add on the name you want to give the tag after the `git tag` command. For instance, `git tag v1.2.2`.  
+
+For an annotated tag, the `-a` option must be specified in `git tag` and the `-m` option can be used to set the tagging message. For example `git tag -a v1.2.2 -m "my version 1.2.2"` . Note that if you do not include `-m`, a text editor will open up and you can enter the message anyway.  
+
+The key thing to remember with tags is that by default, `git push` does not transfer tags to Github. Tags have to be pushed separately after they have been created -- for example, by typing `git push origin v1.2.2`.
+
+A useful feature is that commits can be tagged retrospectively using the shortened SHA (secure hash algorithm) associated with a commit. For example, to tag commit `8687807` in `phstemplates` with `v1.2.1`, we would use
+
+``` bash
+$ git tag v1.2.1 8687807
+$ git push origin v1.2.1
+```
+
+## Further Reading
+[Git - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging){target="_blank"}  
+[Managing releases in a repository - GitHub Docs](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository){target="_blank"}  
+[Is there a standard naming convention for git tags?](https://stackoverflow.com/a/2011372){target="_blank"}  
+[What's the difference between tag and release?](https://stackoverflow.com/a/18512221){target="_blank"}

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHS Package Development Guidance - PHS Package Management Guidance Website</title>
+<title>PHS Package Development Guidance - Guidance for developing PHS R Packages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">PHS Package Management Guidance Website</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Guidance for developing PHS R Packages</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -130,44 +130,20 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/purpose.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Purpose</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pages/commits-vs-tags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Commits vs Tags</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./pages/r-package-versioning.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R Package Versioning</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/in-development-branches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">In-Development Branches</span></a>
+  <a href="./pages/tags.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git Tags and Releases</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/tags-and-releases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tags and Releases</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pages/git-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git Workflow</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pages/annotated-tags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Annotated Tags</span></a>
+  <a href="./pages/package-manager.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">POSIT Package Manager</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,14 +158,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-do-we-need-this-guidance" id="toc-why-do-we-need-this-guidance" class="nav-link active" data-scroll-target="#why-do-we-need-this-guidance">Why do we need this guidance?</a></li>
+  <li><a href="#who-is-this-guidance-for" id="toc-who-is-this-guidance-for" class="nav-link" data-scroll-target="#who-is-this-guidance-for">Who is this guidance for?</a></li>
+  <li><a href="#what-this-guidance-does-not-cover" id="toc-what-this-guidance-does-not-cover" class="nav-link" data-scroll-target="#what-this-guidance-does-not-cover">What this guidance does not cover</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PHS Package Management Guidance Website</h1>
+<h1 class="title">Guidance for developing PHS R Packages</h1>
 </div>
 
 
@@ -204,9 +188,23 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>loren</p>
+<p>This is a short guide to versioning and tagging when developing R packages in Public Health Scotland (PHS) that are hosted on Github. The aim is to have to a consistent process that can be followed for those developing PHS R packages.</p>
+<section id="why-do-we-need-this-guidance" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-need-this-guidance">Why do we need this guidance?</h2>
+<p>PHS is using <a href="https://posit.co/products/enterprise/package-manager" target="_blank">POSIT Package Manager</a> to host R packages (including PHS R packages) internally and this allows users of POSIT Workbench to install packages securely and simply using <code>install.packages()</code>. Versioning and tagging have implications on POSIT Package Manager, depending on how it has been set up for hosting PHS R packages which are being developed on Github. The desired result of developing packages according to this guidance is that users always have access to the latest stable release and are not missing out on any important developments when they install PHS R packages.</p>
+</section>
+<section id="who-is-this-guidance-for" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-this-guidance-for">Who is this guidance for?</h2>
+<p>This guidance is for developers and maintainers of PHS R packages. It is also for those interested in developing PHS R packages or those that want to learn to do this. It is assumed that the reader has some pre-existing knowledge regarding Git and developing R packages.</p>
+</section>
+<section id="what-this-guidance-does-not-cover" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-guidance-does-not-cover">What this guidance does not cover</h2>
+<p>This guidance only discusses particular aspects of R package development and Git and is <strong>not</strong> a general guide to either of these.</p>
+<p>For a comprehensive guide to developing R packages, please see the <a href="https://r-pkgs.org" target="_blank">R Packages book</a>.</p>
+<p>To learn more about Git, please see, for example, the <a href="https://git-scm.com/book/en/v2" target="_blank">Pro Git</a> book, <a href="https://happygitwithr.com" target="_blank">Happy Git and GitHub for the useR</a> or <a href="https://rogerdudler.github.io/git-guide" target="_blank">git - the simple guide</a>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,7 +1,0 @@
-## Tags and Releases
-
-A tag is a git concept which allows you to label & attach additional information to a commit. There are two types of git tags: lightweight or annotated.
-
-Lightweight tags are essentially pointers to a specific commit, while annotated tags are stored as full objects in the Git database with additional information included such as the tagger, date, and a tagging message. They`re also checksummed and can be signed and verified with GNU Privacy Guard (GPG).
-
-Releases are a Github higher level concept, [described by GitHub](https://github.blog/2013-07-02-release-your-software/) as “first-class objects with changelogs and binary assets that present a full project history beyond Git artifacts.” Compared to tags, releases include release notes and links to download the software or source code from GitHub. A release can be created from an existing tag, alternatively an associated tag will be created along with the new release.     

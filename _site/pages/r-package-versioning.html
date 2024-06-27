@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,6 +71,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/img/smaller-transparent-mini-logo.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PHS Package Development Guidance</span>
     </a>
@@ -127,44 +130,20 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/purpose.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Purpose</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/commits-vs-tags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Commits vs Tags</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../pages/r-package-versioning.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">R Package Versioning</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/in-development-branches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">In-Development Branches</span></a>
+  <a href="../pages/tags.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git Tags and Releases</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/tags-and-releases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tags and Releases</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/git-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git Workflow</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/annotated-tags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Annotated Tags</span></a>
+  <a href="../pages/package-manager.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">POSIT Package Manager</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -184,6 +163,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#r-package-versioning" id="toc-r-package-versioning" class="nav-link active" data-scroll-target="#r-package-versioning">R Package Versioning</a></li>
+  <li><a href="#in-development-versions" id="toc-in-development-versions" class="nav-link" data-scroll-target="#in-development-versions">In-development Versions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
     </div>
@@ -194,19 +175,37 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="r-package-versioning" class="level2">
 <h2 class="anchored" data-anchor-id="r-package-versioning">R Package Versioning</h2>
-<p>R considers 0.9.1-10 to be a valid package version, but you’ll never see a version number like that for a tidyverse package. Here is our recommended framework for managing the package version number:</p>
+<p>For PHS R packages, we recommend that package maintainers handle all versioning, following the <a href="https://r-pkgs.org/lifecycle.html#sec-lifecycle-version-number-tidyverse" target="_blank">tidyverse approach to versioning</a>:</p>
 <ul>
-<li><p>Always use <code>.</code> as the separator, never <code>-</code>.</p></li>
-<li><p>A released version number consists of three numbers, <major>.<minor>.<patch>. For version number 1.9.2, 1 is the major number, 9 is the minor number, and 2 is the patch number. Never use versions like 1.0. Always spell out the three components, 1.0.0.</patch></minor></major></p>
-<p><major>.<minor>.<patch> # released version</patch></minor></major></p></li>
-<li><p>Increment patch, e.g.&nbsp;0.8.2 for a patch release: you’ve fixed bugs, but you haven’t added any significant new features and there are no breaking changes. For example, if we discover a show-stopping bug shortly after a release, we would make a quick patch release with the fix. Most releases will have a patch number of 0.</p></li>
-<li><p>Increment minor, e.g.&nbsp;0.9.0, for a minor release. A minor release can include bug fixes, new features, and changes that are backward compatible3. This is the most common type of release. It’s perfectly fine to have so many minor releases that you need to use two (or even three!) digits, e.g.&nbsp;1.17.0.</p></li>
-<li><p>Increment major, e.g.&nbsp;1.0.0, for a major release. This is the most appropriate time to make changes that are not backward compatible and that are likely to affect many users. The 1.0.0 release has special significance and typically indicates that your package is feature complete with a stable API.</p></li>
+<li>Use the <code>.</code> separator rather than <code>-</code>.</li>
+<li>Version number should always include the major, minor and patch number, e.g.&nbsp;<code>1.4.0</code>.</li>
+<li>Increment the major, the minor or patch number reflecting the changes made in the release. Taking the <code>1.4.0</code> example above, a patch release would increment to <code>1.4.1</code>, a minor release to <code>1.5.0</code>, a major release to <code>2.0.0</code></li>
 </ul>
-<p>The trickiest decision you are likely to face is whether a change is “breaking” enough to deserve a major release. For example, if you make an API-incompatible change to a rarely-used part of your code, it may not make sense to increase the major number. But if you fix a bug that many people depend on (it happens!), it will feel like a breaking change to those folks. It’s conceivable that such a bug fix could merit a major release. We’re mostly dwelling on breaking change, but let’s not forget that sometimes you also add exciting new features to your package. From a marketing perspective, you probably want to save these for a major release, because your users are more likely to learn about the new goodies, from reading a blog post or NEWS.</p>
-<p>Let’s first look at the patch number. When you have a patch release, like going from version 1.0.1 to version 1.0.2, this indicates that there have been bug fixes or trivial updates. These are not major alterations to your application’s functionality.</p>
-<p>A minor release, like going from version 1.0.2 to 1.1.0, indicates that there’s been a change to functionality. This can be a functionality change, adding completely new functionality, or removing existing functionality.</p>
-<p>A major release, like going from version 1.1.0 to version 2.0.0, indicates changes that might break backward compatibility or significantly alter functionality. This could be everything from removing deprecated code to introducing a complete re-architecture of your application. Major version numbers tell people that there have been major changes and some things may no longer work as they did on the old version, or that there are new steps that need to be followed to get the same functionality.</p>
+<p>The version is set in the package’s <code>DESCRIPTION</code> file. This can be edited directly or by using the function <code>usethis::use_version()</code>. Some examples of what types of changes would be considered in each of the types of releases:</p>
+<p><strong>Patch release</strong>: No breaking changes and no significant new features. For example, backward compatible bug fixes, addition of new unit tests, minor changes to documentation or vignettes and minor changes to a template.</p>
+<p><strong>Minor release</strong>: New features / functionality or improvements introduced; all changes are backward compatible. Examples could include adding new arguments to functions (that remain backward compatible), introducing new functions (that are not critical to the overall functionality of the package), and efficiency improvements (these may also be considered for a patch release, depending on how important those efficiency improvements are).</p>
+<p><strong>Major release</strong>: Breaking changes (changes that are not backward compatible), changes likely to impact on many users. Significant new features or functions you want to highlight.</p>
+<p>Some questions to ask when deciding how to increment the version number for a new release include:</p>
+<ol type="1">
+<li>Are there any breaking changes?<br>
+If the answer is yes, this should be a major release.</li>
+<li>Are there any changes to functionality (that are user-facing)?<br>
+If the answer is yes, the release should be minor or major.</li>
+</ol>
+<p>Note that it may not always be necessary to increment the version. For example, if only minor typos were fixed in documentation or if the changes were trivial, it may not be worth changing the version. The general guidelines for versioning should be followed as far as possible but it is inevitable that some personal judgement by the package maintainers needs to be exercised when considering how best to increment versions.</p>
+</section>
+<section id="in-development-versions" class="level2">
+<h2 class="anchored" data-anchor-id="in-development-versions">In-development Versions</h2>
+<p>During the initial development of a package, the package version can include a fourth number starting at: <code>0.0.0.9000</code>. During this stage the package is not considered stable, things are expected to change at any point, which is why it is important for the version number to clearly signal that the package is in this development stage. The development version number may be incremented (e.g.&nbsp;<code>0.0.0.9000</code> to <code>0.0.0.9001</code>) if there is a need to differentiate versions of the development version, although this is typically not necessary with every commit.</p>
+<p>One advantage of using the fourth number like this for a development version is that it leaves all version options open for the next released version, i.e.&nbsp;it can be any of <code>0.0.1</code>, <code>0.1.0</code> or <code>1.0.0</code>. Note that the version <code>1.0.0</code> is generally used to communicate that the package is considered stable.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p><a href="https://r-pkgs.org/lifecycle.html" target="_blank">R Packages - Lifecycle</a><br>
+<a href="https://semver.org" target="_blank">Semantic Versioning</a><br>
+<a href="https://www.x.org/releases/X11R7.7/doc/xorg-docs/Versions.html" target="_blank">X.Org Version Numbering Schemes</a><br>
+<a href="https://www.gitkraken.com/gitkon/semantic-versioning-git-tags" target="_blank">Managing Releases with Semantic Versioning and Git Tags</a><br>
+<a href="https://r-pkgs.org/description.html" target="_blank">R Packages - DESCRIPTION</a></p>
 
 
 </section>
