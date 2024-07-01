@@ -23,6 +23,7 @@ Our recommended Git/Github developer workflow for versioning and tagging is as f
 Graphically, this looks as follows:
 
 ```{mermaid}
+
 flowchart TB
     mb(["Main Branch"])
     cdb["Development Branch"]
@@ -39,4 +40,6 @@ flowchart TB
     vi -- "Pull request merged to main" --> mbu
     cr --"Reject changes"--> cdb
     ta <-."git tag 1234567 v1.3.0\ngit push origin v1.3.0".-> mbu
+
+    linkStyle default stroke:lightgray 
 ```
