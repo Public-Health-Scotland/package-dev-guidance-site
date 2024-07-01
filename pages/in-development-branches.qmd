@@ -1,5 +1,0 @@
-## In-development branches
-
-During the initial development of a package, the package version includes a fourth number starting at: 0.0.0.9000.
-During this stage the package is not considered stable, things are expected to change at any point, which is why it is important for the version number to clearly signal that the package is in this development stage. 
-The development version number may be incremented (e.g. 0.0.0.9000 to 0.0.0.9001) if there is a need to differentiate versions of the development version, although this is typically not necessary with every commit. 

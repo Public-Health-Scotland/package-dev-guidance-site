@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHS Package Development Guidance – tags-and-releases</title>
+<title>PHS Package Development Guidance – package-manager</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/tags-and-releases.html">Tags and Releases</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/package-manager.html">POSIT Package Manager</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -137,19 +171,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/tags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tags</span></a>
+ <span class="menu-text">Git Tags and Releases</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/tags-and-releases.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Tags and Releases</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/commits-vs-tags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Commits vs Tags</span></a>
+  <a href="../pages/package-manager.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">POSIT Package Manager</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -168,7 +196,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tags-and-releases" id="toc-tags-and-releases" class="nav-link active" data-scroll-target="#tags-and-releases">Tags and Releases</a></li>
+  <li><a href="#posit-package-manager" id="toc-posit-package-manager" class="nav-link active" data-scroll-target="#posit-package-manager">POSIT Package Manager</a></li>
+  <li><a href="#package-manager-in-phs" id="toc-package-manager-in-phs" class="nav-link" data-scroll-target="#package-manager-in-phs">Package Manager in PHS</a></li>
+  <li><a href="#advantages-and-disadvantages" id="toc-advantages-and-disadvantages" class="nav-link" data-scroll-target="#advantages-and-disadvantages">Advantages and Disadvantages</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
     </div>
@@ -177,11 +208,82 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="tags-and-releases" class="level2">
-<h2 class="anchored" data-anchor-id="tags-and-releases">Tags and Releases</h2>
-<p>A tag is a git concept which allows you to label &amp; attach additional information to a commit. There are two types of git tags: lightweight or annotated.</p>
-<p>Lightweight tags are essentially pointers to a specific commit, while annotated tags are stored as full objects in the Git database with additional information included such as the tagger, date, and a tagging message. They`re also checksummed and can be signed and verified with GNU Privacy Guard (GPG).</p>
-<p>Releases are a Github higher level concept, <a href="https://github.blog/2013-07-02-release-your-software/">described by GitHub</a> as “first-class objects with changelogs and binary assets that present a full project history beyond Git artifacts.” Compared to tags, releases include release notes and links to download the software or source code from GitHub. A release can be created from an existing tag, alternatively an associated tag will be created along with the new release.</p>
+<section id="posit-package-manager" class="level2">
+<h2 class="anchored" data-anchor-id="posit-package-manager">POSIT Package Manager</h2>
+<p>There are two ways for Posit Package Manager to pick up updates from R packages on Github (not applicable to CRAN packages): <code>tags</code> or <code>commits</code>. Commits mode is based on all commits made to a Git branch, while tags mode is based on Git tags in the package repository.</p>
+<ul>
+<li><p><strong>Commits</strong>: The package gets updated on Posit Package Manager each time a new commit is made to the specified branch. The package version is updated automatically with the commit time-stamp reflected at the end of the version number. This guarantees the version number for each new commit will be higher than the previous version number. E.g. <code>phsstyles</code> is on version <code>0.1.1</code>, however the version number created by Posit Package Manager is <code>0.1.1.0.0.0.1654859281</code>.</p></li>
+<li><p><strong>Tags</strong>: The package gets updated on Posit Package Manager each time a Git tag is used in the repository. The package version is defined in the package’s <code>DESCRIPTION</code> file, corresponding to the name of the tag. If two tags reference the same version, preference is given to the newer tag. If a newer tag references an older version than a prior tag, the new tag is built as an archived package. If a tag is removed from a Git endpoint, any packages already built for that tag remain.</p></li>
+</ul>
+<p>Commit mode is recommended when you only want users to have access to every individual update/commit made in a package, whereas tag mode is more suitable when you only want to expose stable releases of packages to users.</p>
+</section>
+<section id="package-manager-in-phs" class="level2">
+<h2 class="anchored" data-anchor-id="package-manager-in-phs">Package Manager in PHS</h2>
+<p>You can check if the PHS POSIT Package Manager is using tags or commits for a particular package by searching the package name at <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages" target="_blank">https://ppm.publichealthscotland.org/client/#/repos/3/packages</a> (the link can only be accessed when you are connected to the PHS network).</p>
+<p>If we look at <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages/phsstyles" target="_blank">phsstyles on Package Manager</a>, we can clearly see it is using commit mode (as of 27th June 2024) as the version number is long and looks auto-generated (<code>0.1.1.0.0.0.1654859281</code>).</p>
+</section>
+<section id="advantages-and-disadvantages" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-and-disadvantages">Advantages and Disadvantages</h2>
+<p>Using commit mode on Package Manager to host an R package makes it easier for maintainers as they do not have to worry so much about how to version every update. The package maintainers would have to ensure (as far as possible) that only stable commits are made on the main branch. However, the disadvantage is that version history may be long (particularly if a number <em>small commits</em> have been made) and storage space on the infrastructure used to host Package Manager is needed to store all source files. For example, <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages/phstemplates" target="_blank">phstemplates on Package Manager</a> has a version created for every commit to the main branch:</p>
+<pre><code>VERSION
+1.2.1.0.0.0.1719407970
+
+ARCHIVED VERSIONS
+1.2.1.0.0.0.1718379552
+Jun 14, 2024 3:39 PM UTC
+1.2.0.0.0.0.1707843561
+Feb 13, 2024 4:59 PM UTC
+1.1.1.0.0.0.1705940511
+Jan 22, 2024 4:21 PM UTC
+1.1.1.0.0.0.1704882475
+Jan 10, 2024 10:27 AM UTC
+1.1.1.0.0.0.1700760626
+Nov 23, 2023 5:30 PM UTC
+1.1.1.0.0.0.1700647485
+Nov 22, 2023 10:04 AM UTC
+1.1.1.0.0.0.1699616873
+Nov 10, 2023 11:47 AM UTC
+1.1.1.0.0.0.1699351034
+Nov 7, 2023 9:57 AM UTC
+1.1.1.0.0.0.1698952735
+Nov 2, 2023 7:18 PM UTC
+1.1.1.0.0.0.1698157806
+Oct 24, 2023 2:30 PM UTC
+1.1.1.0.0.0.1698053868
+Oct 23, 2023 9:37 AM UTC
+1.1.1.0.0.0.1696581278
+Oct 6, 2023 8:34 AM UTC
+1.1.1.0.0.0.1696322496
+Oct 3, 2023 8:41 AM UTC
+1.1.1.0.0.0.1696251514
+Oct 2, 2023 12:58 PM UTC
+1.1.0.0.0.0.1695820271
+Sep 27, 2023 1:11 PM UTC
+1.1.0.0.0.0.1695805326
+Sep 27, 2023 9:02 AM UTC
+1.1.0.0.0.0.1695735559
+Sep 26, 2023 1:39 PM UTC
+1.1.0.0.0.0.1695658190
+Sep 25, 2023 4:09 PM UTC
+1.1.0.0.0.0.1695206490
+Sep 20, 2023 10:41 AM UTC
+1.1.0.0.0.0.1689262223
+Jul 13, 2023 3:30 PM UTC
+1.1.0.0.0.0.1661965078
+Aug 31, 2022 4:57 PM UTC</code></pre>
+<p>Another drawback with commit mode is that you would have to look at the commit history on Github to see exactly what changes were made for each of these versions. If a major bug was introduced at some point in the commit history, it could be challenging for a user to find and install the most recent stable version.</p>
+<p>Tags mode requires more administrative work by maintainers of R packages (as an extra step is needed to associate commits with tags and to push these tags to Github) but should result in a cleaner version history on Package Manager. The deliberate tagging process should mean we get only a list of stable releases and changes in each version should have been clearly documented in <code>news.md</code>.</p>
+<p>If Package Manager were to use tags mode for <code>phstemplates</code>, we would have only the latest <code>v1.2.1</code> and three previous archived versions available, resulting in a lot fewer archived versions compared with commits mode.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git tag</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.0.0</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.1.0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.2.0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.2.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The benefit for users would be that it would be easier to install previous versions of a package if needed (for example, if the latest version introduced a bug). There should also be less versions created on Package Manager which would save some storage space on the infrastructure. Furthermore, these tags can be reviewed periodically and redundant versions can be deleted if desired.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p><a href="https://docs.posit.co/rspm/admin/building-packages/#commits-vs-tags" target="_blank">Building Git Packages - Posit Package Manager</a></p>
 
 
 </section>

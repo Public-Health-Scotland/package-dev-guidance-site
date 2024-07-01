@@ -1,0 +1,84 @@
+## POSIT Package Manager
+There are two ways for Posit Package Manager to pick up updates from R packages on Github (not applicable to CRAN packages): `tags` or `commits`. Commits mode is based on all commits made to a Git branch, while tags mode is based on Git tags in the package repository. 
+
+- **Commits**: The package gets updated on Posit Package Manager each time a new commit is made to the specified branch. The package version is updated automatically with the commit time-stamp reflected at the end of the version number. This guarantees the version number for each new commit will be higher than the previous version number.  E.g. `phsstyles` is on version `0.1.1`, however the version number created by Posit Package Manager is `0.1.1.0.0.0.1654859281`. 
+
+- **Tags**: The package gets updated on Posit Package Manager each time a Git tag is used in the repository. The package version is defined in the package's `DESCRIPTION` file, corresponding to the name of the tag. If two tags reference the same version, preference is given to the newer tag. If a newer tag references an older version than a prior tag, the new tag is built as an archived package. If a tag is removed from a Git endpoint, any packages already built for that tag remain.
+
+Commit mode is recommended when you only want users to have access to every individual update/commit made in a package, whereas tag mode is more suitable when you only want to expose stable releases of packages to users.
+
+## Package Manager in PHS
+You can check if the PHS POSIT Package Manager is using tags or commits for a particular package by searching the package name at [https://ppm.publichealthscotland.org/client/#/repos/3/packages](https://ppm.publichealthscotland.org/client/#/repos/3/packages){target="_blank"} (the link can only be accessed when you are connected to the PHS network).  
+
+If we look at [phsstyles on Package Manager](https://ppm.publichealthscotland.org/client/#/repos/3/packages/phsstyles){target="_blank"}, we can clearly see it is using commit mode (as of 27th June 2024) as the version number is long and looks auto-generated (`0.1.1.0.0.0.1654859281`).
+
+## Advantages and Disadvantages
+Using commit mode on Package Manager to host an R package makes it easier for maintainers as they do not have to worry so much about how to version every update. The package maintainers would have to ensure (as far as possible) that only stable commits are made on the main branch. However, the disadvantage is that version history may be long (particularly if a number of *small commits* have been made) and storage space on the infrastructure used to host Package Manager is needed to store all source files. For example, [phstemplates on Package Manager](https://ppm.publichealthscotland.org/client/#/repos/3/packages/phstemplates){target="_blank"} has a version created for every commit to the main branch:
+
+```
+VERSION
+1.2.1.0.0.0.1719407970
+
+ARCHIVED VERSIONS
+1.2.1.0.0.0.1718379552
+Jun 14, 2024 3:39 PM UTC
+1.2.0.0.0.0.1707843561
+Feb 13, 2024 4:59 PM UTC
+1.1.1.0.0.0.1705940511
+Jan 22, 2024 4:21 PM UTC
+1.1.1.0.0.0.1704882475
+Jan 10, 2024 10:27 AM UTC
+1.1.1.0.0.0.1700760626
+Nov 23, 2023 5:30 PM UTC
+1.1.1.0.0.0.1700647485
+Nov 22, 2023 10:04 AM UTC
+1.1.1.0.0.0.1699616873
+Nov 10, 2023 11:47 AM UTC
+1.1.1.0.0.0.1699351034
+Nov 7, 2023 9:57 AM UTC
+1.1.1.0.0.0.1698952735
+Nov 2, 2023 7:18 PM UTC
+1.1.1.0.0.0.1698157806
+Oct 24, 2023 2:30 PM UTC
+1.1.1.0.0.0.1698053868
+Oct 23, 2023 9:37 AM UTC
+1.1.1.0.0.0.1696581278
+Oct 6, 2023 8:34 AM UTC
+1.1.1.0.0.0.1696322496
+Oct 3, 2023 8:41 AM UTC
+1.1.1.0.0.0.1696251514
+Oct 2, 2023 12:58 PM UTC
+1.1.0.0.0.0.1695820271
+Sep 27, 2023 1:11 PM UTC
+1.1.0.0.0.0.1695805326
+Sep 27, 2023 9:02 AM UTC
+1.1.0.0.0.0.1695735559
+Sep 26, 2023 1:39 PM UTC
+1.1.0.0.0.0.1695658190
+Sep 25, 2023 4:09 PM UTC
+1.1.0.0.0.0.1695206490
+Sep 20, 2023 10:41 AM UTC
+1.1.0.0.0.0.1689262223
+Jul 13, 2023 3:30 PM UTC
+1.1.0.0.0.0.1661965078
+Aug 31, 2022 4:57 PM UTC
+```
+
+Another drawback with commit mode is that you would have to look at the commit history on Github to see exactly what changes were made for each of these versions. If a major bug was introduced at some point in the commit history, it could be challenging for a user to find and install the most recent stable version.   
+
+Tags mode requires more administrative work by maintainers of R packages (as an extra step is needed to associate commits with tags and to push these tags to Github) but should result in a cleaner version history on Package Manager. The deliberate tagging process should mean we get only a list of stable releases and changes in each version should have been clearly documented in `news.md`.  
+
+If Package Manager were to use tags mode for `phstemplates`, we would have only the latest `v1.2.1` and three previous archived versions available, resulting in a lot fewer archived versions compared with commits mode.
+
+``` bash
+$ git tag
+v1.0.0
+v1.1.0
+v1.2.0
+v1.2.1
+```
+
+The benefit for users would be that it would be easier to install previous versions of a package if needed (for example, if the latest version introduced a bug). There should also be less versions created on Package Manager which would save some storage space on the infrastructure. Furthermore, these tags can be reviewed periodically and redundant versions can be deleted if desired.
+
+## Further Reading
+[Building Git Packages - Posit Package Manager](https://docs.posit.co/rspm/admin/building-packages/#commits-vs-tags){target="_blank"}
