@@ -1,4 +1,4 @@
-## POSIT Package Manager
+## Posit Package Manager
 There are two ways for Posit Package Manager to pick up updates from R packages on Github (not applicable to CRAN packages): `tags` or `commits`. Commits mode is based on all commits made to a Git branch, while tags mode is based on Git tags in the package repository. 
 
 - **Commits**: The package gets updated on Posit Package Manager each time a new commit is made to the specified branch. The package version is updated automatically with the commit time-stamp reflected at the end of the version number. This guarantees the version number for each new commit will be higher than the previous version number.  E.g. `phsstyles` is on version `0.1.1`, however the version number created by Posit Package Manager is `0.1.1.0.0.0.1654859281`. 
@@ -8,7 +8,7 @@ There are two ways for Posit Package Manager to pick up updates from R packages 
 Commit mode is recommended when you only want users to have access to every individual update/commit made in a package, whereas tag mode is more suitable when you only want to expose stable releases of packages to users.
 
 ## Package Manager in PHS
-You can check if the PHS POSIT Package Manager is using tags or commits for a particular package by searching the package name at [https://ppm.publichealthscotland.org/client/#/repos/3/packages](https://ppm.publichealthscotland.org/client/#/repos/3/packages){target="_blank"} (the link can only be accessed when you are connected to the PHS network).  
+You can check if the PHS Posit Package Manager is using tags or commits for a particular package by searching the package name at [https://ppm.publichealthscotland.org/client/#/repos/3/packages](https://ppm.publichealthscotland.org/client/#/repos/3/packages){target="_blank"} (the link can only be accessed when you are connected to the PHS network).  
 
 If we look at [phsstyles on Package Manager](https://ppm.publichealthscotland.org/client/#/repos/3/packages/phsstyles){target="_blank"}, we can clearly see it is using commit mode (as of 27th June 2024) as the version number is long and looks auto-generated (`0.1.1.0.0.0.1654859281`).
 
