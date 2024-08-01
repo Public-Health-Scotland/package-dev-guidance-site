@@ -20,7 +20,7 @@ website:
       - href: pages/tags.qmd
         text: "Git Tags and Releases"
       - href: pages/package-manager.qmd
-        text: "POSIT Package Manager"
+        text: "Posit Package Manager"
       - href: pages/recommended-git-workflow.qmd
         text: "Recommended Git Workflow"
 format:
