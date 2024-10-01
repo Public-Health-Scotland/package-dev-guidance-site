@@ -43,9 +43,9 @@ $ git push origin v1.2.1
 ### Creating a Release (and tag) using GitHub
 Find the releases page for the repository, this can usually be seen in the column on the right of the page. For phstemplates the link would be [https://github.com/Public-Health-Scotland/phstemplates/releases]() but generally it is 'https://github.com/Public-Health-Scotland/*<repository name>*/releases'. Click the 'Draft a new release' button. 
 
-![](new_release_page.png){fig-alt="A screenshot of the key part of the GitHub 'new release' page."}
+![](assets/img/new_release_page.PNG){fig-alt="A screenshot of the key part of the GitHub 'new release' page."}
 
-First, click on 'Choose a tag' and either pick an existing tag or type the name for the new tag, following the guidance for naming above. To avoid confusion, it should match the package version in the DESCRIPTION file and be an increase from all previous tags. The target branch will usually be `main` (i.e. the latest commit to main) but you are able to target any branch or commit if needed. Now click 'Generate release notes' which will auto-populate the Release notes section with Markdown content summarising all the commits made between this and the most recent tag. You can now choose to save the draft, or more likely you can click 'Publish release' which will create the git tag and GitHub release.
+First, click on 'Choose a tag' and either pick an existing tag or type the name for the new tag, following the guidance for naming above. To avoid confusion, it should match the package version in the DESCRIPTION file and be an increase from all previous tags. The target branch will usually be `main` (i.e. the latest commit to main) but you can target any branch or commit if needed. Now click 'Generate release notes' which will auto-populate the Release notes section with Markdown content summarising all the commits made between this and the most recent tag. You can now choose to save the draft, or more likely you can click 'Publish release' which will create the git tag and GitHub release.
 
 ## Further Reading
  * [Git - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging){target="_blank"}  
