@@ -7,20 +7,20 @@ For PHS R packages, we recommend that package maintainers handle all versioning,
 
 The version is set in the package's `DESCRIPTION` file. This can be edited directly or by using the function `usethis::use_version()`. Some examples of what types of changes would be considered in each of the types of releases:
 
-**Patch release**: No breaking changes and no significant new features. For example, backward compatible bug fixes, addition of new unit tests, minor changes to documentation or vignettes and minor changes to a template.
+**Patch release**: No breaking changes and no significant new features. For example, backward-compatible bug fixes, addition of new unit tests, minor changes to documentation or vignettes and minor changes to a template.
 
-**Minor release**: New features / functionality or improvements introduced; all changes are backward compatible. Examples could include adding new arguments to functions (that remain backward compatible), introducing new functions (that are not critical to the overall functionality of the package), and efficiency improvements (these may also be considered for a patch release, depending on how important those efficiency improvements are).  
+**Minor release**: New features / functionality or improvements introduced; all changes are backward compatible. Examples could include adding new arguments to functions (that remain backwards compatible), introducing new functions (that are not critical to the overall functionality of the package), and efficiency improvements (these may also be considered for a patch release, depending on how important those efficiency improvements are).  
 
-**Major release**: Breaking changes (changes that are not backward compatible), changes likely to impact on many users. Significant new features or functions you want to highlight.
+**Major release**: Breaking changes (changes that are not backwards compatible), changes likely to impact many users. Significant new features or functions you want to highlight.
 
 Some questions to ask when deciding how to increment the version number for a new release include:
 
-1. Are there any breaking changes?  
-If the answer is yes, this should be a major release.
-2. Are there any changes to functionality (that are user-facing)?  
-If the answer is yes, the release should be minor or major. 
+1. Are there any breaking changes?
+If the answer is yes, this should be a major release. (You should also consider using [lifecycle](https://lifecycle.r-lib.org/articles/communicate.html) to manage and communicate these breaking changes).
+2. Are there any changes to functionality (that are user-facing)?
+If the answer is yes, the release should be minor or major.
 
-Note that it may not always be necessary to increment the version. For example, if only minor typos were fixed in documentation or if the changes were trivial, it may not be worth changing the version. The general guidelines for versioning should be followed as far as possible but it is inevitable that some personal judgement by the package maintainers needs to be exercised when considering how best to increment versions.
+Note that it may not always be necessary to increment the version. For example, if only minor typos were fixed in documentation or if the changes were trivial or non-user-facing, it may not be worth changing the version. The guidelines for versioning should be followed as far as possible but it is up to package maintainers to consider how and when to increment versions.
 
 ## In-development Versions
 During the initial development of a package, the package version can include a fourth number starting at: `0.0.0.9000`. During this stage the package is not considered stable, things are expected to change at any point, which is why it is important for the version number to clearly signal that the package is in this development stage. The development version number may be incremented (e.g. `0.0.0.9000` to `0.0.0.9001`) if there is a need to differentiate versions of the development version, although this is typically not necessary with every commit.  
@@ -28,8 +28,8 @@ During the initial development of a package, the package version can include a f
 One advantage of using the fourth number like this for a development version is that it leaves all version options open for the next released version, i.e. it can be any of `0.0.1`, `0.1.0` or `1.0.0`. Note that the version `1.0.0` is generally used to communicate that the package is considered stable.
 
 ## Further Reading
-[R Packages - Lifecycle](https://r-pkgs.org/lifecycle.html){target="_blank"}  
-[Semantic Versioning](https://semver.org){target="_blank"}  
-[X.Org Version Numbering Schemes](https://www.x.org/releases/X11R7.7/doc/xorg-docs/Versions.html){target="_blank"}  
-[Managing Releases with Semantic Versioning and Git Tags](https://www.gitkraken.com/gitkon/semantic-versioning-git-tags){target="_blank"}  
-[R Packages - DESCRIPTION](https://r-pkgs.org/description.html){target="_blank"}
+- [R Packages - Lifecycle](https://r-pkgs.org/lifecycle.html){target="_blank"}  
+- [Semantic Versioning](https://semver.org){target="_blank"}  
+- [X.Org Version Numbering Schemes](https://www.x.org/releases/X11R7.7/doc/xorg-docs/Versions.html){target="_blank"}  
+- [Managing Releases with Semantic Versioning and Git Tags](https://www.gitkraken.com/gitkon/semantic-versioning-git-tags){target="_blank"}  
+- [R Packages - DESCRIPTION](https://r-pkgs.org/description.html){target="_blank"}
