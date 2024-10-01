@@ -1,17 +1,13 @@
 ## Git Tags and Releases
-A **tag** is a git concept that allows you to label and attach information to a commit. For versioning, tags should be named according to the major/minor/patch format, prefixed by 'v', e.g. `v1.1.0` and should match up with the version set in the package's `DESCRIPTION` file on that commit. There are two types of git tags: `lightweight` and `annotated`.
+A **tag** is a git concept that allows you to label and attach information to a commit. For versioning, tags should be named according to the major/minor/patch format, prefixed by 'v', e.g. `v1.1.0` and should match up with the version set in the package's `DESCRIPTION` file on that commit.
 
-A lightweight tag can be thought of as a branch that does not change and is simply a pointer to a specific commit.
+There are two types of git tags: `lightweight` and `annotated`. A lightweight tag can be thought of as a branch that does not change and is simply a pointer to a specific commit. Annotated tags are stored as full objects in the Git database meaning they get checksummed and contain details such as the tagger name, email, date and a tagging message. Although annotated tags are generally recommended over lightweight tags, lightweight tags should be sufficient for the versioning process when developing PHS R packages.
 
-Annotated tags are more complicated. They are stored as full objects in the Git database meaning they get checksummed and contain details such as the tagger name, email, date and a tagging message.  
+**Releases** are a GitHub concept, [described by GitHub](https://github.blog/2013-07-02-release-your-software){target="_blank"} as "first-class objects with changelogs and binary assets that present a full project history beyond Git artefacts." Compared to tags, releases include release notes and links to download the software or source code from GitHub. A release can be created from an existing tag, or a new tag will be created with the new release.
 
-Although annotated tags include all this information (and are generally recommended over lightweight tags), lightweight tags should be sufficient for the versioning process when developing PHS R packages.
+If you prefer working in the terminal with git, then only tags are required. If you prefer working with a GUI GitHub releases will be used (which will also create corresponding git tags).
 
-**Releases** are a Github higher level concept, [described by GitHub](https://github.blog/2013-07-02-release-your-software){target="_blank"} as "first-class objects with changelogs and binary assets that present a full project history beyond Git artifacts." Compared to tags, releases include release notes and links to download the software or source code from GitHub. A release can be created from an existing tag, alternatively an associated tag will be created along with the new release.  
-
-In order of complexity, we would have lightweight tags being simplest, followed by annotated tags, and lastly releases.
-
-## Creating and Pushing Tags
+### Creating and Pushing Tags locally using the terminal
 To see a list of tags currently being used, you can run `git tag`. For [phstemplates](https://github.com/Public-Health-Scotland/phstemplates){target="_blank"}, we see the following tags (as at 26th June 2024).
 
 ``` bash
@@ -31,9 +27,9 @@ Author: Alan Y <34042624+alan-y@users.noreply.github.com>
 Date:   Fri Jun 14 16:39:12 2024 +0100
 ```
 
-To create a lightweight tag, we simply add on the name you want to give the tag after the `git tag` command. For instance, `git tag v1.2.2`.  
+To create a lightweight tag, we simply add the name you want to give the tag after the `git tag` command. For instance, `git tag v1.2.2`.  
 
-For an annotated tag, the `-a` option must be specified in `git tag` and the `-m` option can be used to set the tagging message. For example `git tag -a v1.2.2 -m "my version 1.2.2"` . Note that if you do not include `-m`, a text editor will open up and you can enter the message anyway.  
+For an annotated tag, the `-a` option must be specified in `git tag` and the `-m` option can be used to set the tagging message. For example `git tag -a v1.2.2 -m "my version 1.2.2"`. Note that if you do not include `-m`, a text editor will open up and you can enter the message anyway.  
 
 The key thing to remember with tags is that by default, `git push` does not transfer tags to Github. Tags have to be pushed separately after they have been created -- for example, by typing `git push origin v1.2.2`.
 
@@ -44,8 +40,15 @@ $ git tag v1.2.1 8687807
 $ git push origin v1.2.1
 ```
 
+### Creating a Release (and tag) using GitHub
+Find the releases page for the repository, this can usually be seen in the column on the right of the page. For phstemplates the link would be [https://github.com/Public-Health-Scotland/phstemplates/releases]() but generally it is 'https://github.com/Public-Health-Scotland/*<repository name>*/releases'. Click the 'Draft a new release' button. 
+
+![](new_release_page.png){fig-alt="A screenshot of the key part of the GitHub 'new release' page."}
+
+First, click on 'Choose a tag' and either pick an existing tag or type the name for the new tag, following the guidance for naming above. To avoid confusion, it should match the package version in the DESCRIPTION file and be an increase from all previous tags. The target branch will usually be `main` (i.e. the latest commit to main) but you are able to target any branch or commit if needed. Now click 'Generate release notes' which will auto-populate the Release notes section with Markdown content summarising all the commits made between this and the most recent tag. You can now choose to save the draft, or more likely you can click 'Publish release' which will create the git tag and GitHub release.
+
 ## Further Reading
-[Git - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging){target="_blank"}  
-[Managing releases in a repository - GitHub Docs](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository){target="_blank"}  
-[Is there a standard naming convention for git tags?](https://stackoverflow.com/a/2011372){target="_blank"}  
-[What's the difference between tag and release?](https://stackoverflow.com/a/18512221){target="_blank"}
+ * [Git - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging){target="_blank"}  
+ * [Managing releases in a repository - GitHub Docs](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository){target="_blank"}  
+ * [Is there a standard naming convention for git tags?](https://stackoverflow.com/a/2011372){target="_blank"}  
+ * [What's the difference between tag and release?](https://stackoverflow.com/a/18512221){target="_blank"}
