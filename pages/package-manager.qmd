@@ -7,7 +7,7 @@ There are two ways for the PHS Posit Package Manager to manage versions for R pa
 
 - **Tags**: The package gets updated on Posit Package Manager each time a Git tag is used in the repository. The package version is defined in the package's `DESCRIPTION` file, corresponding to the name of the tag. If two tags reference the same version, preference is given to the newer tag. If a newer tag references an older version than a prior tag, the new tag is built as an archived package. If a tag is removed from a Git endpoint, any packages already built for that tag remain.
 
-Commit mode is simpler as it requires less work from package maintainers but is not recommended. Tag mode is more suitable as it will only expose releases of packages to users when the maintainer decides.
+Commit mode is simpler and requires less work from package maintainers, but it is not recommended. Tag mode is more suitable as it will only expose package releases to users when the maintainer decides to.
 
 ## Package Manager in PHS
 You can check if the PHS Posit Package Manager is using tags or commits for a particular package by searching the package name at [https://ppm.publichealthscotland.org/client/#/repos/3/packages](https://ppm.publichealthscotland.org/client/#/repos/3/packages){target="_blank"} (the link can only be accessed when you are connected to the PHS network).  
