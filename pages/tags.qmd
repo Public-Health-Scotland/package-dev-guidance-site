@@ -41,7 +41,7 @@ $ git push origin v1.2.1
 ```
 
 ### Creating a Release (and tag) using GitHub
-Find the releases page for the repository, this can usually be seen in the column on the right of the page. For phstemplates the link would be [https://github.com/Public-Health-Scotland/phstemplates/releases]() but generally it is 'https://github.com/Public-Health-Scotland/*<repository name>*/releases'. Click the 'Draft a new release' button. 
+Find the releases page for the repository, this can usually be seen in the column on the right of the page. For phstemplates the link would be [https://github.com/Public-Health-Scotland/phstemplates/releases](){target="_blank"} but generally it is 'https://github.com/Public-Health-Scotland/*<repository name>*/releases'. Click the 'Draft a new release' button. 
 
 ![](../assets/img/new_release_page.PNG){fig-alt="A screenshot of the key part of the GitHub 'new release' page."}
 
