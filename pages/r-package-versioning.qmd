@@ -16,7 +16,7 @@ The version is set in the package's `DESCRIPTION` file. This can be edited direc
 Some questions to ask when deciding how to increment the version number for a new release include:
 
 1. Are there any breaking changes?
-If the answer is yes, this should be a major release. (You should also consider using [lifecycle](https://lifecycle.r-lib.org/articles/communicate.html) to manage and communicate these breaking changes).
+If the answer is yes, this should be a major release. (You should also consider using [lifecycle](https://lifecycle.r-lib.org/articles/communicate.html){target="_blank"} to manage and communicate these breaking changes).
 2. Are there any changes to functionality (that are user-facing)?
 If the answer is yes, the release should be minor or major.
 
