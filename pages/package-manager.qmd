@@ -1,5 +1,5 @@
 ## Posit Package Manager
-PHS have an instance of [Posit Package Manager](https://posit.co/products/enterprise/package-manager/){target="_blank"}, - [https://ppm.publichealthscotland.org/client/](){target="_blank"} this provides a seamless interface for users when installing packages either from CRAN, or packages hosted elsewhere - this is how the PHS packages can be installed easily even though they are only hosted on GitHub. 
+PHS have an instance of [Posit Package Manager](https://posit.co/products/enterprise/package-manager/){target="_blank"}, - [ppm.publichealthscotland.org](https://ppm.publichealthscotland.org/client/){target="_blank"} - this provides a seamless interface for internal PHS users when installing packages either from CRAN, or packages hosted elsewhere - this is how the PHS packages can be installed easily even though they are only hosted on GitHub. 
 
 There are two ways for the PHS Posit Package Manager to manage versions for R packages on GitHub (not applicable to CRAN packages): `tags` or `commits`. Commits mode is the default and based on all commits made to a Git branch (usually main / master), while tags mode is based on Git tags in the package repository. 
 
