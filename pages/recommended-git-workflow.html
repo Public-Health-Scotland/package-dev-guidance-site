@@ -221,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Submit a Pull Request (PR) on GitHub and go through the review process.</li>
 <li>Once changes are approved, the maintainer decides on the major/minor/patch version increment (e.g.&nbsp;<code>1.3.0</code>)</li>
-<li>The developer updates to the agreed version in <code>DESCRIPTION</code>, e.g.<br>
+<li>The developer updates to the agreed version in <code>DESCRIPTION</code> and updates <code>NEWS.md</code>, e.g.<br>
 <code>usethis::use_version(which = "minor", push = TRUE)</code><br>
 </li>
 <li>The pull request is merged to the main branch</li>
@@ -246,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     mb --"git checkout -b feature/cool_new_feature" --&gt; cdb
     cdb --"git add -A\ngit commit -m 'Add &lt;foo&gt; so it can do &lt;bar&gt;'\ngit push origin feature/cool_new_feature" --&gt; ca
     ca --"Github: Make Pull Request"--&gt; cr
-    cr --"Accept changes\nusethis::use_version(which = 'minor', push = TRUE)"--&gt; vi
+    cr --"Accept changes\nusethis::use_version(which = 'minor', push = TRUE)\nUpdate NEWS.md"--&gt; vi
     vi -- "Pull request merged to main" --&gt; mbu
     cr --"Reject changes"--&gt; cdb
     ta &lt;-."git tag 1234567 v1.3.0\ngit push origin v1.3.0".-&gt; mbu
