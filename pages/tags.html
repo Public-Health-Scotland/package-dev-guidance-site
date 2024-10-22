@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/package-manager.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">POSIT Package Manager</span></a>
+ <span class="menu-text">Posit Package Manager</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,8 +196,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#git-tags-and-releases" id="toc-git-tags-and-releases" class="nav-link active" data-scroll-target="#git-tags-and-releases">Git Tags and Releases</a></li>
-  <li><a href="#creating-and-pushing-tags" id="toc-creating-and-pushing-tags" class="nav-link" data-scroll-target="#creating-and-pushing-tags">Creating and Pushing Tags</a></li>
+  <li><a href="#git-tags-and-releases" id="toc-git-tags-and-releases" class="nav-link active" data-scroll-target="#git-tags-and-releases">Git Tags and Releases</a>
+  <ul class="collapse">
+  <li><a href="#creating-and-pushing-tags-locally-using-the-terminal" id="toc-creating-and-pushing-tags-locally-using-the-terminal" class="nav-link" data-scroll-target="#creating-and-pushing-tags-locally-using-the-terminal">Creating and Pushing Tags locally using the terminal</a></li>
+  <li><a href="#creating-a-release-and-tag-using-github" id="toc-creating-a-release-and-tag-using-github" class="nav-link" data-scroll-target="#creating-a-release-and-tag-using-github">Creating a Release (and tag) using GitHub</a></li>
+  </ul></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
@@ -209,15 +212,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="git-tags-and-releases" class="level2">
 <h2 class="anchored" data-anchor-id="git-tags-and-releases">Git Tags and Releases</h2>
-<p>A <strong>tag</strong> is a git concept that allows you to label and attach information to a commit. For versioning, tags should be named according to the major/minor/patch format, prefixed by ‘v’, e.g.&nbsp;<code>v1.1.0</code> and should match up with the version set in the package’s <code>DESCRIPTION</code> file on that commit. There are two types of git tags: <code>lightweight</code> and <code>annotated</code>.</p>
-<p>A lightweight tag can be thought of as a branch that does not change and is simply a pointer to a specific commit.</p>
-<p>Annotated tags are more complicated. They are stored as full objects in the Git database meaning they get checksummed and contain details such as the tagger name, email, date and a tagging message.</p>
-<p>Although annotated tags include all this information (and are generally recommended over lightweight tags), lightweight tags should be sufficient for the versioning process when developing PHS R packages.</p>
-<p><strong>Releases</strong> are a Github higher level concept, <a href="https://github.blog/2013-07-02-release-your-software" target="_blank">described by GitHub</a> as “first-class objects with changelogs and binary assets that present a full project history beyond Git artifacts.” Compared to tags, releases include release notes and links to download the software or source code from GitHub. A release can be created from an existing tag, alternatively an associated tag will be created along with the new release.</p>
-<p>In order of complexity, we would have lightweight tags being simplest, followed by annotated tags, and lastly releases.</p>
-</section>
-<section id="creating-and-pushing-tags" class="level2">
-<h2 class="anchored" data-anchor-id="creating-and-pushing-tags">Creating and Pushing Tags</h2>
+<p>A <strong>tag</strong> is a git concept that allows you to label and attach information to a commit. For versioning, tags should be named according to the major/minor/patch format, prefixed by ‘v’, e.g.&nbsp;<code>v1.1.0</code> and should match up with the version set in the package’s <code>DESCRIPTION</code> file on that commit.</p>
+<p>There are two types of git tags: <code>lightweight</code> and <code>annotated</code>. A lightweight tag can be thought of as a branch that does not change and is simply a pointer to a specific commit. Annotated tags are stored as full objects in the Git database meaning they get checksummed and contain details such as the tagger name, email, date and a tagging message. Although annotated tags are generally recommended over lightweight tags, lightweight tags should be sufficient for the versioning process when developing PHS R packages.</p>
+<p><strong>Releases</strong> are a GitHub concept, <a href="https://github.blog/2013-07-02-release-your-software" target="_blank">described by GitHub</a> as “first-class objects with changelogs and binary assets that present a full project history beyond Git artefacts.” Compared to tags, releases include release notes and links to download the software or source code from GitHub. A release can be created from an existing tag, or a new tag will be created with the new release.</p>
+<p>If you prefer working in the terminal with git, then only tags are required. If you prefer working with a GUI GitHub releases will be used (which will also create corresponding git tags).</p>
+<section id="creating-and-pushing-tags-locally-using-the-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="creating-and-pushing-tags-locally-using-the-terminal">Creating and Pushing Tags locally using the terminal</h3>
 <p>To see a list of tags currently being used, you can run <code>git tag</code>. For <a href="https://github.com/Public-Health-Scotland/phstemplates" target="_blank">phstemplates</a>, we see the following tags (as at 26th June 2024).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git tag</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.0.0</span></span>
@@ -229,19 +229,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 86878078431e4782697d808bb7e64b89b11de0d8 <span class="er">(</span><span class="ex">tag:</span> v1.2.1<span class="kw">)</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> Alan Y <span class="op">&lt;</span>34042624+alan-y@users.noreply.github.com<span class="op">&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Fri Jun 14 16:39:12 2024 +0100</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To create a lightweight tag, we simply add on the name you want to give the tag after the <code>git tag</code> command. For instance, <code>git tag v1.2.2</code>.</p>
-<p>For an annotated tag, the <code>-a</code> option must be specified in <code>git tag</code> and the <code>-m</code> option can be used to set the tagging message. For example <code>git tag -a v1.2.2 -m "my version 1.2.2"</code> . Note that if you do not include <code>-m</code>, a text editor will open up and you can enter the message anyway.</p>
+<p>To create a lightweight tag, we simply add the name you want to give the tag after the <code>git tag</code> command. For instance, <code>git tag v1.2.2</code>.</p>
+<p>For an annotated tag, the <code>-a</code> option must be specified in <code>git tag</code> and the <code>-m</code> option can be used to set the tagging message. For example <code>git tag -a v1.2.2 -m "my version 1.2.2"</code>. Note that if you do not include <code>-m</code>, a text editor will open up and you can enter the message anyway.</p>
 <p>The key thing to remember with tags is that by default, <code>git push</code> does not transfer tags to Github. Tags have to be pushed separately after they have been created – for example, by typing <code>git push origin v1.2.2</code>.</p>
 <p>A useful feature is that commits can be tagged retrospectively using the shortened SHA (secure hash algorithm) associated with a commit. For example, to tag commit <code>8687807</code> in <code>phstemplates</code> with <code>v1.2.1</code>, we would use</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git tag v1.2.1 8687807</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push origin v1.2.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="creating-a-release-and-tag-using-github" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-release-and-tag-using-github">Creating a Release (and tag) using GitHub</h3>
+<p>Find the releases page for the repository, this can usually be seen in the column on the right of the page. For phstemplates the link would be <a href="" target="_blank">https://github.com/Public-Health-Scotland/phstemplates/releases</a> but generally it is ‘https://github.com/Public-Health-Scotland/<em><repository name=""></repository></em>/releases’. Click the ‘Draft a new release’ button.</p>
+<p><img src="../assets/img/new_release_page.PNG" class="img-fluid" alt="A screenshot of the key part of the GitHub 'new release' page."></p>
+<p>First, click on ‘Choose a tag’ and either pick an existing tag or type the name for the new tag, following the guidance for naming above. To avoid confusion, it should match the package version in the DESCRIPTION file and be an increase from all previous tags. The target branch will usually be <code>main</code> (i.e.&nbsp;the latest commit to main) but you can target any branch or commit if needed. Now click ‘Generate release notes’ which will auto-populate the Release notes section with Markdown content summarising all the commits made between this and the most recent tag. You can now choose to save the draft, or more likely you can click ‘Publish release’ which will create the git tag and GitHub release.</p>
+</section>
+</section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging" target="_blank">Git - Tagging</a><br>
-<a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository" target="_blank">Managing releases in a repository - GitHub Docs</a><br>
-<a href="https://stackoverflow.com/a/2011372" target="_blank">Is there a standard naming convention for git tags?</a><br>
-<a href="https://stackoverflow.com/a/18512221" target="_blank">What’s the difference between tag and release?</a></p>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging" target="_blank">Git - Tagging</a><br>
+</li>
+<li><a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository" target="_blank">Managing releases in a repository - GitHub Docs</a><br>
+</li>
+<li><a href="https://stackoverflow.com/a/2011372" target="_blank">Is there a standard naming convention for git tags?</a><br>
+</li>
+<li><a href="https://stackoverflow.com/a/18512221" target="_blank">What’s the difference between tag and release?</a></li>
+</ul>
 
 
 </section>

@@ -143,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/package-manager.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">POSIT Package Manager</span></a>
+ <span class="menu-text">Posit Package Manager</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,17 +182,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Increment the major, the minor or patch number reflecting the changes made in the release. Taking the <code>1.4.0</code> example above, a patch release would increment to <code>1.4.1</code>, a minor release to <code>1.5.0</code>, a major release to <code>2.0.0</code></li>
 </ul>
 <p>The version is set in the package’s <code>DESCRIPTION</code> file. This can be edited directly or by using the function <code>usethis::use_version()</code>. Some examples of what types of changes would be considered in each of the types of releases:</p>
-<p><strong>Patch release</strong>: No breaking changes and no significant new features. For example, backward compatible bug fixes, addition of new unit tests, minor changes to documentation or vignettes and minor changes to a template.</p>
-<p><strong>Minor release</strong>: New features / functionality or improvements introduced; all changes are backward compatible. Examples could include adding new arguments to functions (that remain backward compatible), introducing new functions (that are not critical to the overall functionality of the package), and efficiency improvements (these may also be considered for a patch release, depending on how important those efficiency improvements are).</p>
-<p><strong>Major release</strong>: Breaking changes (changes that are not backward compatible), changes likely to impact on many users. Significant new features or functions you want to highlight.</p>
+<p><strong>Patch release</strong>: No breaking changes and no significant new features. For example, backward-compatible bug fixes, addition of new unit tests, minor changes to documentation or vignettes and minor changes to a template.</p>
+<p><strong>Minor release</strong>: New features / functionality or improvements introduced; all changes are backward compatible. Examples could include adding new arguments to functions (that remain backwards compatible), introducing new functions (that are not critical to the overall functionality of the package), and efficiency improvements (these may also be considered for a patch release, depending on how important those efficiency improvements are).</p>
+<p><strong>Major release</strong>: Breaking changes (changes that are not backwards compatible), changes likely to impact many users. Significant new features or functions you want to highlight.</p>
 <p>Some questions to ask when deciding how to increment the version number for a new release include:</p>
 <ol type="1">
-<li>Are there any breaking changes?<br>
-If the answer is yes, this should be a major release.</li>
-<li>Are there any changes to functionality (that are user-facing)?<br>
-If the answer is yes, the release should be minor or major.</li>
+<li>Are there any breaking changes? If the answer is yes, this should be a major release. (You should also consider using <a href="https://lifecycle.r-lib.org/articles/communicate.html" target="_blank">lifecycle</a> to manage and communicate these breaking changes).</li>
+<li>Are there any changes to functionality (that are user-facing)? If the answer is yes, the release should be minor or major.</li>
 </ol>
-<p>Note that it may not always be necessary to increment the version. For example, if only minor typos were fixed in documentation or if the changes were trivial, it may not be worth changing the version. The general guidelines for versioning should be followed as far as possible but it is inevitable that some personal judgement by the package maintainers needs to be exercised when considering how best to increment versions.</p>
+<p>Note that it may not always be necessary to increment the version. For example, if only minor typos were fixed in documentation or if the changes were trivial or non-user-facing, it may not be worth changing the version. The guidelines for versioning should be followed as far as possible but it is up to package maintainers to consider how and when to increment versions.</p>
 </section>
 <section id="in-development-versions" class="level2">
 <h2 class="anchored" data-anchor-id="in-development-versions">In-development Versions</h2>
@@ -201,11 +199,17 @@ If the answer is yes, the release should be minor or major.</li>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><a href="https://r-pkgs.org/lifecycle.html" target="_blank">R Packages - Lifecycle</a><br>
-<a href="https://semver.org" target="_blank">Semantic Versioning</a><br>
-<a href="https://www.x.org/releases/X11R7.7/doc/xorg-docs/Versions.html" target="_blank">X.Org Version Numbering Schemes</a><br>
-<a href="https://www.gitkraken.com/gitkon/semantic-versioning-git-tags" target="_blank">Managing Releases with Semantic Versioning and Git Tags</a><br>
-<a href="https://r-pkgs.org/description.html" target="_blank">R Packages - DESCRIPTION</a></p>
+<ul>
+<li><a href="https://r-pkgs.org/lifecycle.html" target="_blank">R Packages - Lifecycle</a><br>
+</li>
+<li><a href="https://semver.org" target="_blank">Semantic Versioning</a><br>
+</li>
+<li><a href="https://www.x.org/releases/X11R7.7/doc/xorg-docs/Versions.html" target="_blank">X.Org Version Numbering Schemes</a><br>
+</li>
+<li><a href="https://www.gitkraken.com/gitkon/semantic-versioning-git-tags" target="_blank">Managing Releases with Semantic Versioning and Git Tags</a><br>
+</li>
+<li><a href="https://r-pkgs.org/description.html" target="_blank">R Packages - DESCRIPTION</a></li>
+</ul>
 
 
 </section>

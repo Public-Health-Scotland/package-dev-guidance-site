@@ -137,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/package-manager.html">POSIT Package Manager</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/package-manager.html">Posit Package Manager</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/package-manager.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">POSIT Package Manager</span></a>
+ <span class="menu-text">Posit Package Manager</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,9 +196,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#posit-package-manager" id="toc-posit-package-manager" class="nav-link active" data-scroll-target="#posit-package-manager">POSIT Package Manager</a></li>
+  <li><a href="#posit-package-manager" id="toc-posit-package-manager" class="nav-link active" data-scroll-target="#posit-package-manager">Posit Package Manager</a></li>
   <li><a href="#package-manager-in-phs" id="toc-package-manager-in-phs" class="nav-link" data-scroll-target="#package-manager-in-phs">Package Manager in PHS</a></li>
   <li><a href="#advantages-and-disadvantages" id="toc-advantages-and-disadvantages" class="nav-link" data-scroll-target="#advantages-and-disadvantages">Advantages and Disadvantages</a></li>
+  <li><a href="#adding-a-package-to-the-package-manager" id="toc-adding-a-package-to-the-package-manager" class="nav-link" data-scroll-target="#adding-a-package-to-the-package-manager">Adding a package to the Package Manager</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
@@ -209,22 +210,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="posit-package-manager" class="level2">
-<h2 class="anchored" data-anchor-id="posit-package-manager">POSIT Package Manager</h2>
-<p>There are two ways for Posit Package Manager to pick up updates from R packages on Github (not applicable to CRAN packages): <code>tags</code> or <code>commits</code>. Commits mode is based on all commits made to a Git branch, while tags mode is based on Git tags in the package repository.</p>
+<h2 class="anchored" data-anchor-id="posit-package-manager">Posit Package Manager</h2>
+<p>PHS have an instance of <a href="https://posit.co/products/enterprise/package-manager/" target="_blank">Posit Package Manager</a>, - <a href="https://ppm.publichealthscotland.org/client/" target="_blank">ppm.publichealthscotland.org</a> - this provides a seamless interface for internal PHS users when installing packages either from CRAN, or packages hosted elsewhere - this is how the PHS packages can be installed easily even though they are only hosted on GitHub.</p>
+<p>There are two ways for the PHS Posit Package Manager to manage versions for R packages on GitHub (not applicable to CRAN packages): <code>tags</code> or <code>commits</code>. Commits mode is the default and based on all commits made to a Git branch (usually main / master), while tags mode is based on Git tags in the package repository.</p>
 <ul>
-<li><p><strong>Commits</strong>: The package gets updated on Posit Package Manager each time a new commit is made to the specified branch. The package version is updated automatically with the commit time-stamp reflected at the end of the version number. This guarantees the version number for each new commit will be higher than the previous version number. E.g. <code>phsstyles</code> is on version <code>0.1.1</code>, however the version number created by Posit Package Manager is <code>0.1.1.0.0.0.1654859281</code>.</p></li>
+<li><p><strong>Commits</strong>: The package gets updated on Posit Package Manager each time a new commit is made to the specified branch. The package version is updated automatically with the commit timestamp reflected at the end of the version number. This guarantees the version number for each new commit will be higher than the previous version number. E.g. <code>phsstyles</code> is on version <code>0.1.1</code>, however, the version number created by Posit Package Manager is <code>0.1.1.0.0.0.1654859281</code>.</p></li>
 <li><p><strong>Tags</strong>: The package gets updated on Posit Package Manager each time a Git tag is used in the repository. The package version is defined in the package’s <code>DESCRIPTION</code> file, corresponding to the name of the tag. If two tags reference the same version, preference is given to the newer tag. If a newer tag references an older version than a prior tag, the new tag is built as an archived package. If a tag is removed from a Git endpoint, any packages already built for that tag remain.</p></li>
 </ul>
-<p>Commit mode is recommended when you only want users to have access to every individual update/commit made in a package, whereas tag mode is more suitable when you only want to expose stable releases of packages to users.</p>
+<p>Commit mode is simpler and requires less work from package maintainers, but it is not recommended. Tag mode is more suitable as it will only expose package releases to users when the maintainer decides to.</p>
 </section>
 <section id="package-manager-in-phs" class="level2">
 <h2 class="anchored" data-anchor-id="package-manager-in-phs">Package Manager in PHS</h2>
-<p>You can check if the PHS POSIT Package Manager is using tags or commits for a particular package by searching the package name at <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages" target="_blank">https://ppm.publichealthscotland.org/client/#/repos/3/packages</a> (the link can only be accessed when you are connected to the PHS network).</p>
-<p>If we look at <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages/phsstyles" target="_blank">phsstyles on Package Manager</a>, we can clearly see it is using commit mode (as of 27th June 2024) as the version number is long and looks auto-generated (<code>0.1.1.0.0.0.1654859281</code>).</p>
+<p>You can check if the PHS Posit Package Manager is using tags or commits for a particular package by searching the package name at <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages" target="_blank">https://ppm.publichealthscotland.org/client/#/repos/3/packages</a> (the link can only be accessed when you are connected to the PHS network).</p>
+<p>If we look at <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages/phsstyles" target="_blank">phsstyles on Package Manager</a>, we can see it is using commit mode (as of 27th June 2024) as the version number is long and looks auto-generated (<code>0.1.1.0.0.0.1654859281</code>).</p>
 </section>
 <section id="advantages-and-disadvantages" class="level2">
 <h2 class="anchored" data-anchor-id="advantages-and-disadvantages">Advantages and Disadvantages</h2>
-<p>Using commit mode on Package Manager to host an R package makes it easier for maintainers as they do not have to worry so much about how to version every update. The package maintainers would have to ensure (as far as possible) that only stable commits are made on the main branch. However, the disadvantage is that version history may be long (particularly if a number of <em>small commits</em> have been made) and storage space on the infrastructure used to host Package Manager is needed to store all source files. For example, <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages/phstemplates" target="_blank">phstemplates on Package Manager</a> has a version created for every commit to the main branch:</p>
+<p>Using commit mode on Package Manager to host an R package makes it easier for maintainers as they do not have to worry about package versions with every update. The package maintainers would have to ensure (as far as possible) that only stable commits are made on the main branch. However, the disadvantage is that version history may be long (particularly if several <em>small commits</em> have been made) and storage space on the infrastructure used to host Package Manager is needed to store all source files. For example, <a href="https://ppm.publichealthscotland.org/client/#/repos/3/packages/phstemplates" target="_blank">phstemplates on Package Manager</a> has a version created for every commit to the main branch:</p>
 <pre><code>VERSION
 1.2.1.0.0.0.1719407970
 
@@ -271,15 +273,19 @@ Sep 20, 2023 10:41 AM UTC
 Jul 13, 2023 3:30 PM UTC
 1.1.0.0.0.0.1661965078
 Aug 31, 2022 4:57 PM UTC</code></pre>
-<p>Another drawback with commit mode is that you would have to look at the commit history on Github to see exactly what changes were made for each of these versions. If a major bug was introduced at some point in the commit history, it could be challenging for a user to find and install the most recent stable version.</p>
-<p>Tags mode requires more administrative work by maintainers of R packages (as an extra step is needed to associate commits with tags and to push these tags to Github) but should result in a cleaner version history on Package Manager. The deliberate tagging process should mean we get only a list of stable releases and changes in each version should have been clearly documented in <code>news.md</code>.</p>
+<p>Another drawback with commit mode is that you would have to look at the commit history on GitHub to see exactly what changes were made for each of these versions. If a major bug was introduced at some point in the commit history, it could be challenging for a user to find and install the most recent stable version. Similarly, if a user has an issue with the package, identifying exactly which version of the package / code they have installed can be a hurdle.</p>
+<p>Tags mode requires more administrative work by maintainers of R packages (as an extra step is needed to associate commits with tags and to push these tags to GitHub) but should result in a cleaner version history on the Package Manager. The deliberate tagging process should mean we get only a list of stable releases and changes in each version should have been documented in <code>NEWS.md</code>.</p>
 <p>If Package Manager were to use tags mode for <code>phstemplates</code>, we would have only the latest <code>v1.2.1</code> and three previous archived versions available, resulting in a lot fewer archived versions compared with commits mode.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git tag</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.0.0</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.1.0</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.2.0</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.2.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The benefit for users would be that it would be easier to install previous versions of a package if needed (for example, if the latest version introduced a bug). There should also be less versions created on Package Manager which would save some storage space on the infrastructure. Furthermore, these tags can be reviewed periodically and redundant versions can be deleted if desired.</p>
+<p>The benefit for users would be that it would be easier to install previous versions of a package if needed (for example, if the latest version introduced a bug). There should also be fewer versions created on Package Manager which would save some storage space on the infrastructure. Furthermore, these tags can be reviewed periodically and redundant versions can be deleted if desired.</p>
+</section>
+<section id="adding-a-package-to-the-package-manager" class="level2">
+<h2 class="anchored" data-anchor-id="adding-a-package-to-the-package-manager">Adding a package to the Package Manager</h2>
+<p>The Package Manager is administered by the Data Science team, so an email to them will be required to have a package (a GitHub or Gitea repository) added. To have a package changed from commit mode (the default) to tag mode (recommended) you will similarly need to contact the Data Science team.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
