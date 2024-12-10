@@ -275,12 +275,12 @@ Jul 13, 2023 3:30 PM UTC
 Aug 31, 2022 4:57 PM UTC</code></pre>
 <p>Another drawback with commit mode is that you would have to look at the commit history on GitHub to see exactly what changes were made for each of these versions. If a major bug was introduced at some point in the commit history, it could be challenging for a user to find and install the most recent stable version. Similarly, if a user has an issue with the package, identifying exactly which version of the package / code they have installed can be a hurdle.</p>
 <p>Tags mode requires more administrative work by maintainers of R packages (as an extra step is needed to associate commits with tags and to push these tags to GitHub) but should result in a cleaner version history on the Package Manager. The deliberate tagging process should mean we get only a list of stable releases and changes in each version should have been documented in <code>NEWS.md</code>.</p>
-<p>If Package Manager were to use tags mode for <code>phstemplates</code>, we would have only the latest <code>v1.2.1</code> and three previous archived versions available, resulting in a lot fewer archived versions compared with commits mode.</p>
+<p>If Package Manager were to use tags mode for <code>phstemplates</code>, we would have only the latest <code>1.2.1</code> and three previous archived versions available, resulting in a lot fewer archived versions compared with commits mode.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git tag</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.0.0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.1.0</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.2.0</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">v1.2.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1.0.0</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">1.1.0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">1.2.0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">1.2.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The benefit for users would be that it would be easier to install previous versions of a package if needed (for example, if the latest version introduced a bug). There should also be fewer versions created on Package Manager which would save some storage space on the infrastructure. Furthermore, these tags can be reviewed periodically and redundant versions can be deleted if desired.</p>
 </section>
 <section id="adding-a-package-to-the-package-manager" class="level2">
