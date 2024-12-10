@@ -70,14 +70,14 @@ Another drawback with commit mode is that you would have to look at the commit h
 
 Tags mode requires more administrative work by maintainers of R packages (as an extra step is needed to associate commits with tags and to push these tags to GitHub) but should result in a cleaner version history on the Package Manager. The deliberate tagging process should mean we get only a list of stable releases and changes in each version should have been documented in `NEWS.md`.  
 
-If Package Manager were to use tags mode for `phstemplates`, we would have only the latest `v1.2.1` and three previous archived versions available, resulting in a lot fewer archived versions compared with commits mode.
+If Package Manager were to use tags mode for `phstemplates`, we would have only the latest `1.2.1` and three previous archived versions available, resulting in a lot fewer archived versions compared with commits mode.
 
 ``` bash
 $ git tag
-v1.0.0
-v1.1.0
-v1.2.0
-v1.2.1
+1.0.0
+1.1.0
+1.2.0
+1.2.1
 ```
 
 The benefit for users would be that it would be easier to install previous versions of a package if needed (for example, if the latest version introduced a bug). There should also be fewer versions created on Package Manager which would save some storage space on the infrastructure. Furthermore, these tags can be reviewed periodically and redundant versions can be deleted if desired.
